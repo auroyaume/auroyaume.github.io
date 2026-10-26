@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Au Royaume — Mentions légales</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap">
+<style>
+/* Layout : une colonne de lecture, en-tête « green » + sections numérotées par article */
+:root {
+  --bg: #f6faf6;
+  --surface: #ffffff;
+  --fg: #1d2a22;
+  --muted: #5b6b61;
+  --line: #d9e5dc;
+  --accent: #2f8a4e;
+  --flag: #e7f3ea;
+  --display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111814; --surface: #18221c; --fg: #e4eee7; --muted: #9db0a3; --line: #2a3a30; --accent: #6fd08f; --flag: #1d2d23; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #111814; --surface: #18221c; --fg: #e4eee7; --muted: #9db0a3; --line: #2a3a30; --accent: #6fd08f; --flag: #1d2d23; color-scheme: dark }
+
+body { background: var(--bg); color: var(--fg); font: 16px/1.65 var(--body); }
+.wrap { max-width: 720px; margin: 0 auto; padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px; }
+header { display: grid; gap: 6px; }
+.eyebrow { font: 600 13px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 600 clamp(30px, 6vw, 42px)/1.1 var(--display); margin: 0; text-wrap: balance; }
+.meta { color: var(--muted); font-size: 14px; }
+.summary { background: var(--flag); border-radius: 14px; padding: 18px 20px; display: grid; gap: 8px; }
+.summary h2 { margin: 0; font: 600 18px/1.3 var(--display); }
+.summary ul { margin: 0; padding-left: 20px; }
+section { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 22px; }
+h2 { font: 600 21px/1.3 var(--display); margin: 0; text-wrap: balance; }
+h2 .n { color: var(--accent); margin-right: 6px; font-variant-numeric: tabular-nums; }
+p, ul { margin: 0; max-width: 65ch; }
+ul { padding-left: 20px; display: grid; gap: 4px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+.mail { font-weight: 700; user-select: all; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+.tbl { overflow-x: auto; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 600 14px/1.3 var(--display); color: var(--muted); }
+.en { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 8px; }
+footer { color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Au Royaume</span>
+    <h1>Mentions légales</h1>
+  </header>
+  <section>
+    <h2>Éditeur du site et des applications</h2>
+    <p>Au Royaume — Julien Champin, entrepreneur individuel<br>SIREN 947 794 400<br>Fresnay-sur-Sarthe (72130), France</p>
+    <p>Contact : <span class="mail">auroyaume.contact@gmail.com</span></p>
+    <p>Directeur de la publication : Julien Champin</p>
+  </section>
+  <section>
+    <h2>Hébergement</h2>
+    <p>GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+  </section>
+  <footer>© 2026 Au Royaume · <a href="/">Accueil</a></footer>
+</div>
+</body>
+</html>
