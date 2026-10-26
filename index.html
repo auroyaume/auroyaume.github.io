@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Au Royaume — Jeux mobiles</title>
+<meta name="description" content="Au Royaume, petit studio indépendant de jeux mobiles. Créateur de Hole Hop, minigolf de poche.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap">
+<style>
+/* Layout : en-tête studio, carte du jeu (vert gazon), infos légales en pied */
+:root {
+  --bg: #f6faf6; --surface: #ffffff; --fg: #1d2a22; --muted: #5b6b61; --line: #d9e5dc;
+  --accent: #2f8a4e; --grass: #3fa35f; --sky: #bfe3f5;
+  --display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #111814; --surface: #18221c; --fg: #e4eee7; --muted: #9db0a3; --line: #2a3a30;
+  --accent: #6fd08f; --grass: #2f7d49; --sky: #20384a; color-scheme: dark } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 var(--body); }
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 20px 64px; display: grid; gap: 40px; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.crown { width: 48px; height: 48px; flex: none; }
+.brand h1 { margin: 0; font: 600 34px/1 var(--display); }
+.brand p { margin: 2px 0 0; color: var(--muted); }
+.game { border-radius: 22px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); display: grid; }
+.scene { position: relative; height: 170px; background: linear-gradient(var(--sky), var(--sky) 55%, var(--grass) 55%); }
+.flag { position: absolute; left: 68%; bottom: 30%; width: 4px; height: 86px; background: #f3f3f3; }
+.flag::after { content: ""; position: absolute; left: 4px; top: 0; border-left: 34px solid #e8453c; border-top: 12px solid transparent; border-bottom: 12px solid transparent; }
+.hole { position: absolute; left: calc(68% - 14px); bottom: calc(30% - 7px); width: 32px; height: 12px; border-radius: 50%; background: #10301c; }
+.ball { position: absolute; left: 22%; bottom: 24%; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: inset -4px -4px 0 rgba(0,0,0,.12); }
+.dots { position: absolute; left: calc(22% + 30px); bottom: calc(24% + 8px); width: 38%; height: 6px;
+  background: radial-gradient(circle, #fff 2.5px, transparent 3px) 0 0 / 18px 6px repeat-x; }
+.info { padding: 22px 24px 26px; display: grid; gap: 10px; }
+.info h2 { margin: 0; font: 600 28px/1.1 var(--display); }
+.tag { color: var(--accent); font: 600 13px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; }
+.info p { margin: 0; max-width: 62ch; }
+.info ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.status { justify-self: start; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 14px; color: var(--muted); }
+section h3 { margin: 0 0 6px; font: 600 20px/1.2 var(--display); }
+section p { margin: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+footer { border-top: 1px solid var(--line); padding-top: 18px; color: var(--muted); font-size: 14px; display: grid; gap: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand">
+    <svg class="crown" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 36 L9 14 L18 24 L24 10 L30 24 L39 14 L42 36 Z" fill="#f2b630"/><rect x="6" y="36" width="36" height="6" rx="2" fill="#d99a1c"/><circle cx="24" cy="10" r="3" fill="#e8453c"/></svg>
+    <div>
+      <h1>Au Royaume</h1>
+      <p>Petit studio indépendant de jeux mobiles</p>
+    </div>
+  </header>
+
+  <article class="game">
+    <div class="scene" aria-hidden="true"><div class="hole"></div><div class="flag"></div><div class="dots"></div><div class="ball"></div></div>
+    <div class="info">
+      <span class="tag">Notre premier jeu</span>
+      <h2>Hole Hop</h2>
+      <p>Un minigolf de poche en 3D : vise, dose ta force et enchaîne les trous à travers plusieurs mondes, des prairies aux manoirs hantés.</p>
+      <ul>
+        <li>Plus de 70 trous et des passages secrets à découvrir</li>
+        <li>Balles, traînées, putters et chapeaux à collectionner</li>
+        <li>Se joue à une main, en quelques minutes</li>
+      </ul>
+      <span class="status">Bientôt sur Google Play</span>
+      <p><a href="/confidentialite/">Politique de confidentialité de Hole Hop</a></p>
+    </div>
+  </article>
+
+  <section>
+    <h3>Contact</h3>
+    <p>Une question, un bug, une idée de trou ? Écris-nous : <strong>auroyaume.contact@gmail.com</strong></p>
+  </section>
+
+  <footer>
+    <span>Au Royaume — Julien Champin, entrepreneur individuel</span>
+    <span>SIREN 947 794 400 · Fresnay-sur-Sarthe, France</span>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hole Hop — Confidentialité</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap">
+<style>
+/* Layout : une colonne de lecture, en-tête « green » + sections numérotées par article */
+:root {
+  --bg: #f6faf6;
+  --surface: #ffffff;
+  --fg: #1d2a22;
+  --muted: #5b6b61;
+  --line: #d9e5dc;
+  --accent: #2f8a4e;
+  --flag: #e7f3ea;
+  --display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111814; --surface: #18221c; --fg: #e4eee7; --muted: #9db0a3; --line: #2a3a30; --accent: #6fd08f; --flag: #1d2d23; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #111814; --surface: #18221c; --fg: #e4eee7; --muted: #9db0a3; --line: #2a3a30; --accent: #6fd08f; --flag: #1d2d23; color-scheme: dark }
+
+body { background: var(--bg); color: var(--fg); font: 16px/1.65 var(--body); }
+.wrap { max-width: 720px; margin: 0 auto; padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px; }
+header { display: grid; gap: 6px; }
+.eyebrow { font: 600 13px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 600 clamp(30px, 6vw, 42px)/1.1 var(--display); margin: 0; text-wrap: balance; }
+.meta { color: var(--muted); font-size: 14px; }
+.summary { background: var(--flag); border-radius: 14px; padding: 18px 20px; display: grid; gap: 8px; }
+.summary h2 { margin: 0; font: 600 18px/1.3 var(--display); }
+.summary ul { margin: 0; padding-left: 20px; }
+section { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 22px; }
+h2 { font: 600 21px/1.3 var(--display); margin: 0; text-wrap: balance; }
+h2 .n { color: var(--accent); margin-right: 6px; font-variant-numeric: tabular-nums; }
+p, ul { margin: 0; max-width: 65ch; }
+ul { padding-left: 20px; display: grid; gap: 4px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+.mail { font-weight: 700; user-select: all; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+.tbl { overflow-x: auto; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 600 14px/1.3 var(--display); color: var(--muted); }
+.en { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 8px; }
+footer { color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Hole Hop · minigolf mobile</span>
+    <h1>Politique de confidentialité</h1>
+    <span class="meta">Dernière mise à jour : 26 octobre 2026</span>
+  </header>
+
+  <div class="summary">
+    <h2>En bref</h2>
+    <ul>
+      <li>Pas de compte, pas d'inscription : ta progression reste sur ton téléphone.</li>
+      <li>Le jeu affiche des publicités via Google AdMob, qui peut utiliser des données techniques de ton appareil.</li>
+      <li>Les achats passent par Google Play : nous ne voyons jamais tes informations de paiement.</li>
+      <li>Nous ne vendons aucune donnée.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2><span class="n">1.</span>Qui sommes-nous</h2>
+    <p>Hole Hop est édité par <strong>Julien Champin, entrepreneur individuel (Au Royaume)</strong>, SIREN 947 794 400, 3 lieu-dit L'Érable, 72130 Fresnay-sur-Sarthe, France.</p>
+    <p>Contact : <span class="mail">auroyaume.contact@gmail.com</span></p>
+  </section>
+
+  <section>
+    <h2><span class="n">2.</span>Données enregistrées par le jeu</h2>
+    <p>Le jeu enregistre uniquement <strong>sur ton appareil</strong> : ta progression (trous terminés, étoiles, records), tes pièces, les objets débloqués et tes réglages (son). Ces données ne sont envoyées à aucun serveur nous appartenant. Elles sont effacées si tu désinstalles le jeu ou si tu supprimes ses données dans les paramètres Android.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">3.</span>Publicités (Google AdMob)</h2>
+    <p>Le jeu affiche des publicités (vidéos récompensées que tu choisis de regarder, et publicités entre certains trous). Elles sont fournies par <strong>Google AdMob</strong>, qui peut collecter et traiter :</p>
+    <ul>
+      <li>l'identifiant publicitaire de l'appareil ;</li>
+      <li>l'adresse IP et une localisation approximative qui en découle ;</li>
+      <li>des informations techniques (modèle, système, langue) ;</li>
+      <li>des données d'interaction avec les publicités (affichage, clic).</li>
+    </ul>
+    <p>Ces données servent à afficher les publicités, à mesurer leur performance et à lutter contre la fraude. Si tu te trouves dans l'Espace économique européen ou au Royaume-Uni, une fenêtre de consentement s'affiche au premier lancement : tu peux accepter ou refuser les publicités personnalisées. Si tu refuses, tu verras des publicités non personnalisées.</p>
+    <p>Pour en savoir plus : <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">comment Google utilise les données des applications partenaires</a> et <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">règles de confidentialité de Google</a>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4.</span>Achats intégrés (Google Play)</h2>
+    <p>Les achats (packs de pièces, suppression des publicités, Pass Premium) sont entièrement traités par <strong>Google Play</strong>. Nous recevons seulement la confirmation qu'un produit a été acheté, pour le débloquer dans le jeu. Nous n'avons jamais accès à ton nom, à ton adresse e-mail ni à tes moyens de paiement.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5.</span>Récapitulatif</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Donnée</th><th>Qui la traite</th><th>Pourquoi</th></tr></thead>
+        <tbody>
+          <tr><td>Progression, pièces, réglages</td><td>Le jeu, sur ton appareil uniquement</td><td>Faire fonctionner le jeu</td></tr>
+          <tr><td>Identifiant publicitaire, IP, infos appareil</td><td>Google AdMob</td><td>Publicités, mesure, anti-fraude</td></tr>
+          <tr><td>Achats</td><td>Google Play</td><td>Paiement et déblocage des achats</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">6.</span>Enfants</h2>
+    <p>Hole Hop ne s'adresse pas spécifiquement aux enfants de moins de 13 ans. Nous ne collectons sciemment aucune donnée personnelle d'enfants. Si tu penses qu'un enfant nous a transmis des données, écris-nous et nous ferons le nécessaire.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">7.</span>Tes droits</h2>
+    <p>Conformément au RGPD, tu peux demander l'accès, la rectification ou la suppression de tes données, ou t'opposer à leur traitement. Comme nous ne stockons rien sur nos serveurs, la plupart de ces demandes concernent Google : tu peux réinitialiser ou supprimer ton identifiant publicitaire dans les paramètres Android (Google → Annonces) et gérer tes données sur <a href="https://myaccount.google.com" target="_blank" rel="noopener">ton compte Google</a>.</p>
+    <p>Pour toute question : <span class="mail">auroyaume.contact@gmail.com</span>. Tu peux aussi adresser une réclamation à la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">8.</span>Modifications</h2>
+    <p>Cette politique peut évoluer, par exemple si de nouvelles fonctionnalités sont ajoutées. La date de mise à jour en haut de la page indique la dernière version.</p>
+  </section>
+
+  <div class="en" lang="en">
+    <h2>English summary</h2>
+    <p>Hole Hop is published by Julien Champin (Au Royaume), France. The game has no accounts and stores progress only on your device. Ads are served by Google AdMob, which may collect your advertising ID, IP address, device information and ad interactions; users in the EEA/UK are asked for consent on first launch. In-app purchases are processed entirely by Google Play; we never see payment details. We do not sell any data. Contact: <span class="mail">auroyaume.contact@gmail.com</span>.</p>
+  </div>
+
+  <footer>© 2026 Au Royaume · Hole Hop · <a href="/">Accueil</a></footer>
+</div>
+
+</body>
+</html>
