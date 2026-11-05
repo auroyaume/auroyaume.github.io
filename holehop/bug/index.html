@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hole Hop — Signaler un bug</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap">
+<style>
+:root {
+  --top: #1f3049; --bottom: #121c2e;
+  --glass: rgba(255,255,255,.07); --line: rgba(255,255,255,.16);
+  --fg: #eef3fb; --muted: #a9b8cf; --green: #4fd18b; --green-ink: #0f2a1c; --err: #ff9a90;
+  --display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--bottom); }
+body { margin: 0; min-height: 100vh; color: var(--fg); font: 16px/1.55 var(--body);
+  background: linear-gradient(180deg, var(--top), var(--bottom)) fixed; }
+.wrap { max-width: 560px; margin: 0 auto; display: grid; gap: 18px;
+  padding: 28px max(16px, env(safe-area-inset-right, 0px)) 48px max(16px, env(safe-area-inset-left, 0px)); }
+.eyebrow { font: 600 13px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+h1 { font: 600 clamp(30px, 8vw, 40px)/1.1 var(--display); margin: 6px 0 8px; }
+p { margin: 0; }
+.lead { color: var(--muted); }
+.card { background: var(--glass); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: grid; gap: 16px; }
+label { display: grid; gap: 6px; font: 600 15px/1.3 var(--display); }
+select, textarea { width: 100%; font: 400 16px/1.4 var(--body); color: var(--fg); background: rgba(0,0,0,.28);
+  border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+select { appearance: none; -webkit-appearance: none; padding-right: 40px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 55%, calc(100% - 14px) 55%; background-size: 6px 6px; background-repeat: no-repeat; }
+select option { background: #18253a; color: var(--fg); }
+textarea { min-height: 170px; resize: vertical; }
+select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+.count { font: 400 13px/1 var(--body); color: var(--muted); text-align: right; }
+.btn { width: 100%; border: 0; border-radius: 14px; padding: 16px; font: 600 19px/1 var(--display);
+  background: var(--green); color: var(--green-ink); cursor: pointer; box-shadow: 0 4px 0 rgba(0,0,0,.28); }
+.btn:disabled { opacity: .6; cursor: default; }
+.msg { border-radius: 12px; padding: 12px 14px; font-size: 15px; }
+.msg.err { background: rgba(255,138,128,.12); border: 1px solid rgba(255,138,128,.45); color: var(--err); }
+.note { color: var(--muted); font-size: 14px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.tech { color: var(--muted); font-size: 12.5px; display: grid; gap: 6px; }
+.tech b { font: 600 13px/1.3 var(--display); color: var(--muted); }
+.tech dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; }
+.tech dt { opacity: .8; } .tech dd { margin: 0; word-break: break-word; }
+.thanks { text-align: center; justify-items: center; padding: 26px 18px; }
+.thanks h2 { font: 600 28px/1.2 var(--display); margin: 0; color: var(--green); }
+[hidden] { display: none !important; }
+footer { font-size: 13px; color: var(--muted); }
+a { color: var(--green); text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Hole Hop</span>
+    <h1 id="t_title">Signaler un bug</h1>
+    <p class="lead" id="t_lead"></p>
+  </header>
+
+  <form id="form" class="card" novalidate>
+    <label>
+      <span id="t_type"></span>
+      <select id="type" name="type">
+        <option value="bug" id="o_bug"></option>
+        <option value="lenteur" id="o_lenteur"></option>
+        <option value="plantage" id="o_plantage"></option>
+        <option value="achat" id="o_achat"></option>
+        <option value="autre" id="o_autre"></option>
+      </select>
+    </label>
+    <label>
+      <span id="t_desc"></span>
+      <textarea id="desc" name="description" maxlength="2000" required></textarea>
+      <span class="count" id="count">0 / 2000</span>
+    </label>
+    <div class="hp" aria-hidden="true"><label>Site web <input type="text" id="hp" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <div class="msg err" id="err" role="alert" hidden></div>
+    <button class="btn" id="send" type="submit"></button>
+    <p class="note" id="t_note"></p>
+  </form>
+
+  <div class="card thanks" id="thanks" hidden>
+    <h2 id="t_ok"></h2>
+    <p id="t_ok2"></p>
+    <button class="btn" id="back" type="button"></button>
+    <p class="note" id="t_hint" hidden></p>
+  </div>
+
+  <div class="tech">
+    <b id="t_techt"></b>
+    <dl id="tech"></dl>
+    <span id="t_techn"></span>
+  </div>
+  <footer><a id="t_priv" href="../../confidentialite/"></a></footer>
+</div>
+<noscript><div class="wrap"><p>JavaScript required / JavaScript nécessaire.</p></div></noscript>
+
+<script>
+(function () {
+  "use strict";
+  var HOOK = "https://hook.eu2.make.com/3cfw2dtfa53qvwxlc5agwjvve3gkmapa";
+  var MAX_DESC = 2000, WAIT_MS = 60000, KEY = "hh_bug_last";
+
+  var T = {
+    fr: { title: "Signaler un bug", lead: "Dis-nous ce qui ne va pas. Plus tu es précis, plus on corrige vite.", type: "Type de problème",
+      bug: "Bug", lenteur: "Lenteur", plantage: "Plantage", achat: "Achat", autre: "Autre",
+      desc: "Décris le problème", ph: "Que s'est-il passé ? Sur quel trou ?", send: "Envoyer", sending: "Envoi…",
+      note: "Nous ne te demandons pas ton e-mail : nous ne pourrons pas te répondre, mais ton message nous aide à corriger le jeu.",
+      techt: "Envoyé avec ton message", techn: "Ces infos techniques nous aident à trouver le problème. Rien de personnel n'est envoyé.",
+      ok: "Merci, c'est envoyé !", ok2: "Ton message nous est bien parvenu.", back: "Retour au jeu", hint: "Tu peux maintenant fermer cet onglet pour revenir au jeu.",
+      err: "Oups, l'envoi n'a pas marché. Vérifie ta connexion et réessaie. Ton texte est conservé.", req: "Écris quelques mots pour décrire le problème.",
+      wait: "Un message vient d'être envoyé. Réessaie dans une minute.", priv: "Confidentialité",
+      lv: "Version", lt: "Téléphone", la: "Android", lm: "Monde", lh: "Trou", ll: "Langue" },
+    en: { title: "Report a bug", lead: "Tell us what went wrong. The more details you give, the faster we can fix it.", type: "Type of problem",
+      bug: "Bug", lenteur: "Slowdown", plantage: "Crash", achat: "Purchase", autre: "Other",
+      desc: "Describe the problem", ph: "What happened? On which hole?", send: "Send", sending: "Sending…",
+      note: "We don't ask for your e-mail, so we can't reply, but your message helps us fix the game.",
+      techt: "Sent along with your message", techn: "This technical info helps us find the problem. Nothing personal is sent.",
+      ok: "Thanks, it's sent!", ok2: "Your message reached us.", back: "Back to the game", hint: "You can now close this tab to go back to the game.",
+      err: "Oops, sending failed. Check your connection and try again. Your text is kept.", req: "Write a few words to describe the problem.",
+      wait: "A message was just sent. Please try again in a minute.", priv: "Privacy",
+      lv: "Version", lt: "Phone", la: "Android", lm: "World", lh: "Hole", ll: "Language" },
+    es: { title: "Informar de un error", lead: "Cuéntanos qué ha fallado. Cuantos más detalles des, más rápido lo arreglamos.", type: "Tipo de problema",
+      bug: "Error", lenteur: "Lentitud", plantage: "Cierre inesperado", achat: "Compra", autre: "Otro",
+      desc: "Describe el problema", ph: "¿Qué pasó? ¿En qué hoyo?", send: "Enviar", sending: "Enviando…",
+      note: "No te pedimos el correo, así que no podremos responderte, pero tu mensaje nos ayuda a corregir el juego.",
+      techt: "Se envía junto con tu mensaje", techn: "Esta información técnica nos ayuda a encontrar el problema. No se envía nada personal.",
+      ok: "¡Gracias, enviado!", ok2: "Tu mensaje nos ha llegado.", back: "Volver al juego", hint: "Ya puedes cerrar esta pestaña para volver al juego.",
+      err: "Vaya, no se pudo enviar. Revisa tu conexión e inténtalo de nuevo. Tu texto se conserva.", req: "Escribe unas palabras para describir el problema.",
+      wait: "Acabas de enviar un mensaje. Inténtalo de nuevo dentro de un minuto.", priv: "Privacidad",
+      lv: "Versión", lt: "Teléfono", la: "Android", lm: "Mundo", lh: "Hoyo", ll: "Idioma" },
+    pt: { title: "Relatar um bug", lead: "Conte o que deu errado. Quanto mais detalhes você der, mais rápido a gente corrige.", type: "Tipo de problema",
+      bug: "Bug", lenteur: "Lentidão", plantage: "Travamento", achat: "Compra", autre: "Outro",
+      desc: "Descreva o problema", ph: "O que aconteceu? Em qual buraco?", send: "Enviar", sending: "Enviando…",
+      note: "Não pedimos seu e-mail, então não poderemos responder, mas sua mensagem ajuda a gente a corrigir o jogo.",
+      techt: "Enviado junto com sua mensagem", techn: "Essas informações técnicas ajudam a encontrar o problema. Nada pessoal é enviado.",
+      ok: "Obrigado, enviado!", ok2: "Sua mensagem chegou até nós.", back: "Voltar ao jogo", hint: "Agora você pode fechar esta aba para voltar ao jogo.",
+      err: "Ops, o envio não funcionou. Confira sua conexão e tente de novo. Seu texto foi mantido.", req: "Escreva algumas palavras para descrever o problema.",
+      wait: "Uma mensagem acabou de ser enviada. Tente de novo em um minuto.", priv: "Privacidade",
+      lv: "Versão", lt: "Celular", la: "Android", lm: "Mundo", lh: "Buraco", ll: "Idioma" },
+    de: { title: "Fehler melden", lead: "Erzähl uns, was schiefgelaufen ist. Je genauer du bist, desto schneller können wir es beheben.", type: "Art des Problems",
+      bug: "Fehler", lenteur: "Ruckeln", plantage: "Absturz", achat: "Kauf", autre: "Sonstiges",
+      desc: "Beschreibe das Problem", ph: "Was ist passiert? Auf welcher Bahn?", send: "Senden", sending: "Wird gesendet…",
+      note: "Wir fragen nicht nach deiner E-Mail-Adresse, daher können wir nicht antworten, aber deine Nachricht hilft uns, das Spiel zu verbessern.",
+      techt: "Mit deiner Nachricht gesendet", techn: "Diese technischen Angaben helfen uns, das Problem zu finden. Es wird nichts Persönliches gesendet.",
+      ok: "Danke, gesendet!", ok2: "Deine Nachricht ist bei uns angekommen.", back: "Zurück zum Spiel", hint: "Du kannst diesen Tab jetzt schließen, um zum Spiel zurückzukehren.",
+      err: "Hoppla, das Senden hat nicht geklappt. Prüfe deine Verbindung und versuche es noch einmal. Dein Text bleibt erhalten.", req: "Schreib ein paar Worte, um das Problem zu beschreiben.",
+      wait: "Es wurde gerade eine Nachricht gesendet. Versuche es in einer Minute erneut.", priv: "Datenschutz",
+      lv: "Version", lt: "Handy", la: "Android", lm: "Welt", lh: "Bahn", ll: "Sprache" },
+    it: { title: "Segnala un bug", lead: "Raccontaci cosa non va. Più dettagli dai, più in fretta possiamo correggere.", type: "Tipo di problema",
+      bug: "Bug", lenteur: "Rallentamento", plantage: "Crash", achat: "Acquisto", autre: "Altro",
+      desc: "Descrivi il problema", ph: "Cos'è successo? Su quale buca?", send: "Invia", sending: "Invio in corso…",
+      note: "Non chiediamo la tua e-mail, quindi non potremo risponderti, ma il tuo messaggio ci aiuta a correggere il gioco.",
+      techt: "Inviato insieme al tuo messaggio", techn: "Queste informazioni tecniche ci aiutano a trovare il problema. Non viene inviato nulla di personale.",
+      ok: "Grazie, inviato!", ok2: "Il tuo messaggio ci è arrivato.", back: "Torna al gioco", hint: "Ora puoi chiudere questa scheda per tornare al gioco.",
+      err: "Ops, l'invio non è riuscito. Controlla la connessione e riprova. Il tuo testo è stato conservato.", req: "Scrivi qualche parola per descrivere il problema.",
+      wait: "Hai appena inviato un messaggio. Riprova tra un minuto.", priv: "Privacy",
+      lv: "Versione", lt: "Telefono", la: "Android", lm: "Mondo", lh: "Buca", ll: "Lingua" }
+  };
+
+  function clean(v, n) { return String(v == null ? "" : v).replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, n); }
+  function $(id) { return document.getElementById(id); }
+
+  var q = new URLSearchParams(location.search);
+  var P = { v: clean(q.get("v"), 20), code: clean(q.get("code"), 10), lang: clean(q.get("lang"), 10),
+    tel: clean(q.get("tel"), 60), android: clean(q.get("android"), 10), monde: clean(q.get("monde"), 30), trou: clean(q.get("trou"), 40) };
+  var lg = P.lang.toLowerCase().slice(0, 2);
+  if (!T[lg]) lg = "en";
+  var L = T[lg];
+
+  document.documentElement.lang = lg;
+  document.title = "Hole Hop — " + L.title;
+  $("t_title").textContent = L.title; $("t_lead").textContent = L.lead; $("t_type").textContent = L.type;
+  ["bug", "lenteur", "plantage", "achat", "autre"].forEach(function (k) { $("o_" + k).textContent = L[k]; });
+  $("t_desc").textContent = L.desc; $("desc").placeholder = L.ph; $("send").textContent = L.send;
+  $("t_note").textContent = L.note; $("t_techt").textContent = L.techt; $("t_techn").textContent = L.techn;
+  $("t_ok").textContent = L.ok; $("t_ok2").textContent = L.ok2; $("back").textContent = L.back; $("t_hint").textContent = L.hint;
+  $("t_priv").textContent = L.priv;
+
+  var rows = [["lv", P.v], ["lt", P.tel], ["la", P.android], ["lm", P.monde], ["lh", P.trou], ["ll", P.lang || lg]];
+  var dl = $("tech");
+  rows.forEach(function (r) {
+    var dt = document.createElement("dt"), dd = document.createElement("dd");
+    dt.textContent = L[r[0]]; dd.textContent = r[1] || "—";
+    dl.appendChild(dt); dl.appendChild(dd);
+  });
+
+  var desc = $("desc"), count = $("count"), err = $("err"), btn = $("send"), sending = false, lastSent = 0;
+  desc.addEventListener("input", function () { count.textContent = desc.value.length + " / " + MAX_DESC; });
+  function showErr(m) { err.textContent = m; err.hidden = false; }
+  function readLast() { try { return parseInt(localStorage.getItem(KEY) || "0", 10) || 0; } catch (e) { return 0; } }
+  function saveLast(t) { lastSent = t; try { localStorage.setItem(KEY, String(t)); } catch (e) {} }
+  function done() { $("form").hidden = true; $("thanks").hidden = false; window.scrollTo(0, 0); }
+
+  $("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (sending) return;
+    err.hidden = true;
+    if ($("hp").value) { done(); return; }
+    var text = desc.value.replace(/\u0000/g, "").trim().slice(0, MAX_DESC);
+    if (!text) { showErr(L.req); desc.focus(); return; }
+    if (Date.now() - Math.max(lastSent, readLast()) < WAIT_MS) { showErr(L.wait); return; }
+
+    sending = true; btn.disabled = true; btn.textContent = L.sending;
+    var payload = { type: $("type").value, description: text, version: P.v, code: P.code,
+      lang: P.lang || lg, tel: P.tel, android: P.android, monde: P.monde, trou: P.trou };
+    var ctl = new AbortController(), timer = setTimeout(function () { ctl.abort(); }, 12000);
+    fetch(HOOK, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), signal: ctl.signal })
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); saveLast(Date.now()); done(); })
+      .catch(function () { showErr(L.err); })
+      .then(function () { clearTimeout(timer); sending = false; btn.disabled = false; btn.textContent = L.send; });
+  });
+
+  $("back").addEventListener("click", function () {
+    try { window.close(); } catch (e) {}
+    setTimeout(function () { $("t_hint").hidden = false; }, 300);
+  });
+})();
+</script>
+</body>
+</html>
