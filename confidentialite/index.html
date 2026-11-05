@@ -61,7 +61,7 @@ footer { color: var(--muted); font-size: 14px; }
   <header>
     <span class="eyebrow">Hole Hop · minigolf mobile</span>
     <h1>Politique de confidentialité</h1>
-    <span class="meta">Dernière mise à jour : 26 octobre 2026</span>
+    <span class="meta">Dernière mise à jour : 5 novembre 2026</span>
   </header>
 
   <div class="summary">
@@ -69,6 +69,8 @@ footer { color: var(--muted); font-size: 14px; }
     <ul>
       <li>Pas de compte, pas d'inscription : ta progression reste sur ton téléphone.</li>
       <li>Le jeu affiche des publicités via Google AdMob, qui peut utiliser des données techniques de ton appareil.</li>
+      <li>Des statistiques d'usage anonymes (Firebase, Google) aident à améliorer le jeu ; tu peux les couper dans les Réglages.</li>
+      <li>Si tu signales un bug, ton message n'est envoyé que si tu appuies sur « Envoyer ».</li>
       <li>Les achats passent par Google Play : nous ne voyons jamais tes informations de paiement.</li>
       <li>Nous ne vendons aucune donnée.</li>
     </ul>
@@ -82,7 +84,7 @@ footer { color: var(--muted); font-size: 14px; }
 
   <section>
     <h2><span class="n">2.</span>Données enregistrées par le jeu</h2>
-    <p>Le jeu enregistre uniquement <strong>sur ton appareil</strong> : ta progression (trous terminés, étoiles, records), tes pièces, les objets débloqués et tes réglages (son). Ces données ne sont envoyées à aucun serveur nous appartenant. Elles sont effacées si tu désinstalles le jeu ou si tu supprimes ses données dans les paramètres Android.</p>
+    <p>Le jeu enregistre uniquement <strong>sur ton appareil</strong> : ta progression (trous terminés, étoiles, records), tes pièces, les objets débloqués et tes réglages (son). Ces données restent sur ton appareil : elles ne sont envoyées nulle part, sauf ce qui est décrit aux sections 3 à 5 (publicités, statistiques d'usage et signalement de bug). Elles sont effacées si tu désinstalles le jeu ou si tu supprimes ses données dans les paramètres Android.</p>
   </section>
 
   <section>
@@ -99,18 +101,34 @@ footer { color: var(--muted); font-size: 14px; }
   </section>
 
   <section>
-    <h2><span class="n">4.</span>Achats intégrés (Google Play)</h2>
+    <h2><span class="n">4.</span>Statistiques d'usage (Firebase Analytics)</h2>
+    <p>Le jeu utilise <strong>Firebase Analytics</strong> (Google) pour savoir combien de joueurs reviennent, quels trous posent problème et quelles publicités sont vues. Aucun nom, aucun e-mail et aucun texte libre n'est envoyé : seulement des numéros de trou et des compteurs. Google associe ces données à un identifiant d'installation, pas à ton nom.</p>
+    <p>Si tu te trouves dans l'Espace économique européen ou au Royaume-Uni, ces statistiques suivent ton choix dans la fenêtre de consentement. Dans tous les cas, l'interrupteur <strong>« Statistiques d'usage »</strong> des Réglages du jeu coupe leur envoi.</p>
+    <p>Pour en savoir plus : <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">confidentialité et sécurité dans Firebase</a>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">5.</span>Signaler un bug</h2>
+    <p>La ligne <strong>« Signaler un bug »</strong> des Réglages ouvre une page web de notre site, dans ton navigateur. Le jeu ajoute dans l'adresse des informations techniques : version du jeu, langue, modèle du téléphone, version d'Android et, si tu as déjà joué, le dernier monde et trou. Aucun nom, aucun e-mail, aucun identifiant.</p>
+    <p>Rien n'est envoyé tant que tu n'appuies pas sur « Envoyer ». Alors, le type de problème, ton texte (n'y mets pas d'informations personnelles) et ces informations techniques nous sont transmis, uniquement pour comprendre et corriger les problèmes.</p>
+    <p>Ils sont reçus par l'outil <strong>Make</strong> et conservés dans une base <strong>Airtable</strong> réservée à Au Royaume. Comme nous ne demandons pas ton e-mail, nous ne pouvons pas te répondre. Pour demander la suppression d'un message, écris-nous en indiquant la date, la version du jeu et le début de ton texte, pour que nous le retrouvions.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6.</span>Achats intégrés (Google Play)</h2>
     <p>Les achats (packs de pièces, suppression des publicités, Pass Premium) sont entièrement traités par <strong>Google Play</strong>. Nous recevons seulement la confirmation qu'un produit a été acheté, pour le débloquer dans le jeu. Nous n'avons jamais accès à ton nom, à ton adresse e-mail ni à tes moyens de paiement.</p>
   </section>
 
   <section>
-    <h2><span class="n">5.</span>Récapitulatif</h2>
+    <h2><span class="n">7.</span>Récapitulatif</h2>
     <div class="tbl">
       <table>
         <thead><tr><th>Donnée</th><th>Qui la traite</th><th>Pourquoi</th></tr></thead>
         <tbody>
           <tr><td>Progression, pièces, réglages</td><td>Le jeu, sur ton appareil uniquement</td><td>Faire fonctionner le jeu</td></tr>
           <tr><td>Identifiant publicitaire, IP, infos appareil</td><td>Google AdMob</td><td>Publicités, mesure, anti-fraude</td></tr>
+          <tr><td>Statistiques d'usage (numéros de trou, compteurs)</td><td>Google Firebase Analytics</td><td>Améliorer le jeu</td></tr>
+          <tr><td>Signalement de bug (type, texte, version, langue, modèle du téléphone, Android, dernier trou)</td><td>Au Royaume, via Make et Airtable</td><td>Comprendre et corriger les problèmes, seulement si tu envoies le formulaire</td></tr>
           <tr><td>Achats</td><td>Google Play</td><td>Paiement et déblocage des achats</td></tr>
         </tbody>
       </table>
@@ -118,24 +136,24 @@ footer { color: var(--muted); font-size: 14px; }
   </section>
 
   <section>
-    <h2><span class="n">6.</span>Enfants</h2>
+    <h2><span class="n">8.</span>Enfants</h2>
     <p>Hole Hop ne s'adresse pas spécifiquement aux enfants de moins de 13 ans. Nous ne collectons sciemment aucune donnée personnelle d'enfants. Si tu penses qu'un enfant nous a transmis des données, écris-nous et nous ferons le nécessaire.</p>
   </section>
 
   <section>
-    <h2><span class="n">7.</span>Tes droits</h2>
-    <p>Conformément au RGPD, tu peux demander l'accès, la rectification ou la suppression de tes données, ou t'opposer à leur traitement. Comme nous ne stockons rien sur nos serveurs, la plupart de ces demandes concernent Google : tu peux réinitialiser ou supprimer ton identifiant publicitaire dans les paramètres Android (Google → Annonces) et gérer tes données sur <a href="https://myaccount.google.com" target="_blank" rel="noopener">ton compte Google</a>.</p>
+    <h2><span class="n">9.</span>Tes droits</h2>
+    <p>Conformément au RGPD, tu peux demander l'accès, la rectification ou la suppression de tes données, ou t'opposer à leur traitement. Comme nous ne stockons presque rien nous-mêmes (hors signalements de bug, section 5), la plupart de ces demandes concernent Google : tu peux réinitialiser ou supprimer ton identifiant publicitaire dans les paramètres Android (Google → Annonces) et gérer tes données sur <a href="https://myaccount.google.com" target="_blank" rel="noopener">ton compte Google</a>.</p>
     <p>Pour toute question : <span class="mail">auroyaume.contact@gmail.com</span>. Tu peux aussi adresser une réclamation à la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a>.</p>
   </section>
 
   <section>
-    <h2><span class="n">8.</span>Modifications</h2>
+    <h2><span class="n">10.</span>Modifications</h2>
     <p>Cette politique peut évoluer, par exemple si de nouvelles fonctionnalités sont ajoutées. La date de mise à jour en haut de la page indique la dernière version.</p>
   </section>
 
   <div class="en" lang="en">
     <h2>English summary</h2>
-    <p>Hole Hop is published by Au Royaume, a sole proprietorship based in France. The game has no accounts and stores progress only on your device. Ads are served by Google AdMob, which may collect your advertising ID, IP address, device information and ad interactions; users in the EEA/UK are asked for consent on first launch. In-app purchases are processed entirely by Google Play; we never see payment details. We do not sell any data. Contact: <span class="mail">auroyaume.contact@gmail.com</span>.</p>
+    <p>Hole Hop is published by Au Royaume, a sole proprietorship based in France. The game has no accounts and stores progress only on your device. Ads are served by Google AdMob, which may collect your advertising ID, IP address, device information and ad interactions; users in the EEA/UK are asked for consent on first launch. In-app purchases are processed entirely by Google Play; we never see payment details. Anonymous usage statistics (Firebase Analytics) can be turned off in the game settings. If you report a bug, the message you choose to send and basic technical information (game version, language, phone model, Android version, last hole played) are received through Make and stored in Airtable; we do not ask for your name or e-mail. We do not sell any data. Contact: <span class="mail">auroyaume.contact@gmail.com</span>.</p>
   </div>
 
   <footer>© 2026 Au Royaume · Hole Hop · <a href="/">Accueil</a></footer>
