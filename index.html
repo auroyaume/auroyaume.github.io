@@ -2,86 +2,175 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Au Royaume — Jeux mobiles</title>
-<meta name="description" content="Au Royaume, petit studio indépendant de jeux mobiles. Créateur de Hole Hop, minigolf de poche.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Au Royaume — Studio indépendant de jeux mobiles</title>
+<meta name="description" content="Au Royaume, petit studio indépendant de jeux mobiles installé au Mans. Créateur de Hole Hop, minigolf 3D qui se joue au doigt.">
+<meta name="theme-color" content="#141c2b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Au Royaume">
+<meta property="og:title" content="Au Royaume — Studio indépendant de jeux mobiles">
+<meta property="og:description" content="Petit studio indépendant de jeux mobiles. Premier jeu : Hole Hop, minigolf 3D.">
+<meta property="og:url" content="https://auroyaume.github.io/">
+<meta property="og:image" content="https://auroyaume.github.io/assets/og-holehop.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
 <style>
-/* Layout : en-tête studio, carte du jeu (vert gazon), infos légales en pied */
-:root {
-  --bg: #f6faf6; --surface: #ffffff; --fg: #1d2a22; --muted: #5b6b61; --line: #d9e5dc;
-  --accent: #2f8a4e; --grass: #3fa35f; --sky: #bfe3f5;
-  --display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
-  --body: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+/* Accueil : blason en grand, puis les jeux (grille prête pour plusieurs cartes), le studio, le contact */
+.hero { padding: 88px 0 64px; text-align: center; }
+.hero .container { display: grid; justify-items: center; gap: 22px; }
+.crest { width: 132px; height: 154px; filter: drop-shadow(0 12px 40px rgba(246, 195, 67, .28)); animation: float 6s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-8px); } }
+.hero h1 { font-size: clamp(48px, 10vw, 84px); letter-spacing: -.01em; }
+.hero h1 span { color: var(--gold); }
+.hero .lead { margin: 0 auto; text-align: center; }
+.hero .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px; }
+
+.games { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.game { overflow: hidden; display: grid; grid-template-rows: auto 1fr; text-decoration: none; color: inherit;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.game:hover { color: inherit; transform: translateY(-4px); border-color: rgba(246, 195, 67, .45); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+.game .art { aspect-ratio: 1200 / 735; background: var(--night-2); }
+.game .art img { width: 100%; height: 100%; object-fit: cover; }
+.game .body { padding: 22px 24px 26px; display: grid; gap: 10px; align-content: start; }
+.game h3 { font-size: 30px; }
+.game .row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 6px; }
+.game .more { font: 600 16px/1 var(--display); color: var(--gold); }
+.game.featured { grid-column: 1 / -1; }
+@media (min-width: 860px) {
+  .game.featured { grid-template-rows: none; grid-template-columns: 1.35fr 1fr; }
+  .game.featured .art { aspect-ratio: auto; min-height: 320px; }
+  .game.featured .body { align-content: center; padding: 32px 34px; }
 }
-@media (prefers-color-scheme: dark) { :root {
-  --bg: #111814; --surface: #18221c; --fg: #e4eee7; --muted: #9db0a3; --line: #2a3a30;
-  --accent: #6fd08f; --grass: #2f7d49; --sky: #20384a; color-scheme: dark } }
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 var(--body); }
-.wrap { max-width: 760px; margin: 0 auto; padding: 48px 20px 64px; display: grid; gap: 40px; }
-.brand { display: flex; align-items: center; gap: 14px; }
-.crown { width: 48px; height: 48px; flex: none; }
-.brand h1 { margin: 0; font: 600 34px/1 var(--display); }
-.brand p { margin: 2px 0 0; color: var(--muted); }
-.game { border-radius: 22px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); display: grid; }
-.scene { position: relative; height: 170px; background: linear-gradient(var(--sky), var(--sky) 55%, var(--grass) 55%); }
-.flag { position: absolute; left: 68%; bottom: 30%; width: 4px; height: 86px; background: #f3f3f3; }
-.flag::after { content: ""; position: absolute; left: 4px; top: 0; border-left: 34px solid #e8453c; border-top: 12px solid transparent; border-bottom: 12px solid transparent; }
-.hole { position: absolute; left: calc(68% - 14px); bottom: calc(30% - 7px); width: 32px; height: 12px; border-radius: 50%; background: #10301c; }
-.ball { position: absolute; left: 22%; bottom: 24%; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: inset -4px -4px 0 rgba(0,0,0,.12); }
-.dots { position: absolute; left: calc(22% + 30px); bottom: calc(24% + 8px); width: 38%; height: 6px;
-  background: radial-gradient(circle, #fff 2.5px, transparent 3px) 0 0 / 18px 6px repeat-x; }
-.info { padding: 22px 24px 26px; display: grid; gap: 10px; }
-.info h2 { margin: 0; font: 600 28px/1.1 var(--display); }
-.tag { color: var(--accent); font: 600 13px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; }
-.info p { margin: 0; max-width: 62ch; }
-.info ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
-.status { justify-self: start; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 14px; color: var(--muted); }
-section h3 { margin: 0 0 6px; font: 600 20px/1.2 var(--display); }
-section p { margin: 0; }
-a { color: var(--accent); text-underline-offset: 3px; }
-footer { border-top: 1px solid var(--line); padding-top: 18px; color: var(--muted); font-size: 14px; display: grid; gap: 4px; }
+.game.soon { grid-column: 1 / -1; border-style: dashed; display: flex; align-items: center; justify-content: center; gap: 18px; padding: 22px 24px; color: var(--muted); }
+.game.soon:hover { transform: none; box-shadow: none; border-color: var(--line); }
+.game.soon .q { font: 600 36px/1 var(--display); color: var(--gold); opacity: .7; }
+
+.studio { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.studio .card { padding: 24px; display: grid; gap: 8px; align-content: start; }
+.studio .ico { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: rgba(246,195,67,.12); font-size: 22px; }
+.studio h3 { font-size: 21px; }
+.studio p { color: var(--muted); }
+
+.contact { padding: 40px; display: grid; gap: 14px; justify-items: start;
+  background: linear-gradient(135deg, rgba(246,195,67,.12), rgba(79,209,139,.06)), var(--glass); }
+.contact h2 { font-size: clamp(26px, 4vw, 34px); }
+.contact .mail { font: 600 clamp(16px, 4.4vw, 24px)/1.2 var(--display); color: var(--fg); user-select: all; overflow-wrap: anywhere; }
+@media (max-width: 520px) { .contact { padding: 26px 22px; } }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="brand">
-    <svg class="crown" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 36 L9 14 L18 24 L24 10 L30 24 L39 14 L42 36 Z" fill="#f2b630"/><rect x="6" y="36" width="36" height="6" rx="2" fill="#d99a1c"/><circle cx="24" cy="10" r="3" fill="#e8453c"/></svg>
-    <div>
-      <h1>Au Royaume</h1>
-      <p>Petit studio indépendant de jeux mobiles</p>
-    </div>
-  </header>
 
-  <article class="game">
-    <div class="scene" aria-hidden="true"><div class="hole"></div><div class="flag"></div><div class="dots"></div><div class="ball"></div></div>
-    <div class="info">
-      <span class="tag">Notre premier jeu</span>
-      <h2>Hole Hop</h2>
-      <p>Un minigolf de poche en 3D : vise, dose ta force et enchaîne les trous à travers plusieurs mondes, des prairies aux manoirs hantés.</p>
-      <ul>
-        <li>Plus de 70 trous et des passages secrets à découvrir</li>
-        <li>Balles, traînées, putters et chapeaux à collectionner</li>
-        <li>Se joue à une main, en quelques minutes</li>
-      </ul>
-      <span class="status">Bientôt sur Google Play</span>
-      <p><a href="/confidentialite/">Politique de confidentialité de Hole Hop</a></p>
-    </div>
-  </article>
+<header class="topbar">
+  <div class="container">
+    <a class="logo" href="/" aria-current="page"><img src="/assets/blason.svg" alt="" width="30" height="35">Au Royaume</a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#jeux">Jeux</a>
+      <a class="opt" href="#studio">Studio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <section>
-    <h3>Contact</h3>
-    <p>Une question, un bug, une idée de trou ? Écris-nous : <strong>auroyaume.contact@gmail.com</strong></p>
+<main>
+  <section class="hero">
+    <div class="container">
+      <img class="crest" src="/assets/blason.svg" alt="Blason d'Au Royaume" width="132" height="154">
+      <h1>Au <span>Royaume</span></h1>
+      <p class="lead">Petit studio indépendant de jeux mobiles, au Mans. Des jeux qu'on prend en main en quelques secondes, et qu'on a envie de rouvrir.</p>
+      <div class="actions">
+        <a class="btn" href="/holehop/">Découvrir Hole Hop</a>
+        <a class="btn ghost" href="#contact">Nous écrire</a>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <span>© 2026 Au Royaume · <a href="/mentions-legales/">Mentions légales</a> · <a href="/confidentialite/">Confidentialité</a></span>
-  </footer>
-</div>
+  <section class="section" id="jeux">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Nos jeux</span>
+        <h2>Ce qui se prépare au Royaume</h2>
+      </div>
+
+      <div class="games">
+        <a class="game card featured" href="/holehop/">
+          <div class="art"><img src="/holehop/img/carte.webp" alt="Hole Hop : les îles de la Prairie, des Cimes et de l'Archipel" width="1200" height="735"></div>
+          <div class="body">
+            <span class="eyebrow">Notre premier jeu · Minigolf 3D</span>
+            <h3>Hole Hop</h3>
+            <p>Un minigolf 3D qui se joue au doigt : vise, tire, trouve les passages secrets et débloque de nouveaux mondes, des prairies aux îles de pirates.</p>
+            <div class="row">
+              <span class="pill">Bientôt sur Google Play</span>
+              <span class="more">Voir le jeu →</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Prochain jeu : dupliquer la carte ci-dessus (sans la classe « featured »)
+             et créer son dossier, par exemple /tidekeep/index.html sur le modèle de /holehop/. -->
+        <div class="game card soon" aria-label="Prochain jeu en préparation">
+          <div class="q" aria-hidden="true">?</div>
+          <p>Un autre jeu se prépare dans l'atelier. On en reparle bientôt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="studio">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Le studio</span>
+        <h2>Petit studio, jeux soignés</h2>
+        <p class="lead">Au Royaume, c'est un studio indépendant installé au Mans. On conçoit, on code et on teste nos jeux nous-mêmes, sur de vrais téléphones.</p>
+      </div>
+      <div class="studio">
+        <div class="card">
+          <div class="ico" aria-hidden="true">📱</div>
+          <h3>Pensés pour le téléphone</h3>
+          <p>Des parties courtes, jouables d'une main, qui tournent bien même sur les téléphones modestes.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">🗝️</div>
+          <h3>Des secrets partout</h3>
+          <p>Passages cachés, trous bonus, objets à collectionner : on aime récompenser la curiosité.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">🛠️</div>
+          <h3>À l'écoute des joueurs</h3>
+          <p>Un bug, une idée ? Chaque message est lu et les mises à jour suivent ce que vous nous dites.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact card">
+        <span class="eyebrow">Contact</span>
+        <h2>Une question, un bug, une idée de trou ?</h2>
+        <p class="lead">Écris-nous, on répond dès qu'on peut.</p>
+        <a class="mail" href="mailto:auroyaume.contact@gmail.com">auroyaume.contact@gmail.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <a class="logo" href="/"><img src="/assets/blason.svg" alt="" width="24" height="28">Au Royaume</a>
+    <nav aria-label="Liens du pied de page">
+      <a href="/holehop/">Hole Hop</a>
+      <a href="/confidentialite/">Confidentialité</a>
+      <a href="/mentions-legales/">Mentions légales</a>
+    </nav>
+    <span>© 2026 Au Royaume</span>
+  </div>
+</footer>
+
 </body>
 </html>
