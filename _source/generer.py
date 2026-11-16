@@ -61,12 +61,18 @@ document.addEventListener('click',function(e){var d=document.querySelector('.lan
 # Réseaux sociaux du studio (mêmes comptes pour tous les jeux)
 RESEAUX = [
     ("TikTok", "https://www.tiktok.com/@auroyaume_studio",
-     '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z"/></svg>'),
+     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#25F4EE" transform="translate(-.8 -.6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#FE2C55" transform="translate(.8 .6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#fff"/></svg>'),
     ("Instagram", "https://www.instagram.com/auroyaume_studio/",
-     '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>'),
+     '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="url(#ar-ig)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16" cy="8" r=".95" fill="#fff"/></svg>'),
     ("YouTube", "https://www.youtube.com/@auroyaume_studio",
-     '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path fill-rule="evenodd" d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2 27 27 0 0 0 2 12a27 27 0 0 0 .4 4.8 2.6 2.6 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8A27 27 0 0 0 22 12a27 27 0 0 0-.4-4.8ZM10 15.2V8.8l5.2 3.2Z"/></svg>'),
+     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8Z" fill="#FF0000"/><path d="M9.8 15.3V8.7l5.7 3.3Z" fill="#fff"/></svg>'),
 ]
+# Dégradé d'Instagram, défini une seule fois en haut de chaque page (référencé par url(#ar-ig))
+SVG_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>'
+            '<radialGradient id="ar-ig" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/>'
+            '<stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/>'
+            '<stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient>'
+            '</defs></svg>')
 PSEUDO = "@auroyaume_studio"
 
 
@@ -149,6 +155,7 @@ def main():
                 "redirect": REDIRECT if fr else "",
                 "lang_menu": menu_langues(code, chemin, textes["lang_label"][code] or "Langue"),
                 "lang_script": LANG_SCRIPT,
+                "svg_defs": SVG_DEFS,
                 "social_head": reseaux_icones("social social-head", v["social_on"], v["social_aria"]),
                 "social_foot": reseaux_icones("social", v["social_on"], v["social_aria"], indent="    "),
                 "social_cards": reseaux_cartes(v["social_on"]),

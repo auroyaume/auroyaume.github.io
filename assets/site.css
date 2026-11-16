@@ -140,7 +140,7 @@ p { margin: 0; }
 .social { display: inline-flex; align-items: center; gap: 4px; }
 .social a { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; color: var(--muted); }
 .social a:hover { color: var(--fg); background: var(--glass-2); }
-.social svg { width: 19px; height: 19px; }
+.social svg { width: 20px; height: 20px; }
 .social-head { padding-right: 4px; margin-right: 2px; border-right: 1px solid var(--line); }
 @media (max-width: 760px) { .social-head { display: none; } }
 .social-big a { width: 46px; height: 46px; background: var(--glass); border: 1px solid var(--line); color: var(--fg); }
@@ -150,6 +150,6 @@ p { margin: 0; }
 .social-card { display: grid; justify-items: start; gap: 4px; padding: 22px 24px; text-decoration: none; color: var(--fg);
   transition: transform .18s ease, border-color .18s ease; }
 .social-card:hover { color: var(--fg); transform: translateY(-3px); border-color: rgba(246, 195, 67, .45); }
-.social-card svg { width: 30px; height: 30px; color: var(--gold); margin-bottom: 8px; }
+.social-card svg { width: 34px; height: 34px; margin-bottom: 8px; }
 .social-card b { font: 600 21px/1.2 var(--display); }
 .social-card span { color: var(--muted); font-size: 15px; }
