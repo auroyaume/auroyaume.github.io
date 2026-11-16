@@ -4,6 +4,7 @@ Usage (depuis la racine du dépôt) :  python _source/generer.py
 Voir _source/LISEZMOI.md.
 """
 import csv
+import hashlib
 import html
 import os
 import re
@@ -129,6 +130,7 @@ def menu_langues(courante, chemin, label):
 
 def main():
     textes = lire_textes()
+    css_v = hashlib.md5(open(os.path.join(RACINE, "assets", "site.css"), "rb").read()).hexdigest()[:8]
     manquants = []
     for modele, chemin in PAGES:
         gabarit = open(os.path.join(SRC, modele), encoding="utf-8").read()
@@ -156,6 +158,7 @@ def main():
                 "lang_menu": menu_langues(code, chemin, textes["lang_label"][code] or "Langue"),
                 "lang_script": LANG_SCRIPT,
                 "svg_defs": SVG_DEFS,
+                "css_v": css_v,
                 "social_head": reseaux_icones("social social-head", v["social_on"], v["social_aria"]),
                 "social_foot": reseaux_icones("social", v["social_on"], v["social_aria"], indent="    "),
                 "social_cards": reseaux_cartes(v["social_on"]),
