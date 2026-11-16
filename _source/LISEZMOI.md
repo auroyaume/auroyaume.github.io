@@ -34,6 +34,17 @@ Dans `modele_holehop.html` :
 
 Dans `modele_accueil.html`, remplace aussi la pastille de la carte Hole Hop. Ensuite, relance le script.
 
+## Réseaux sociaux
+
+Les liens TikTok, Instagram et YouTube (`@auroyaume_studio`) sont dans la liste `RESEAUX` en haut de `generer.py`. On les retrouve à 4 endroits :
+
+- dans l'en-tête (sur ordinateur) ;
+- dans la section « Suis l'aventure » de l'accueil ;
+- dans la partie Aide de Hole Hop ;
+- dans le pied de page.
+
+Pour ajouter un réseau, ajoute une ligne (nom, lien, icône SVG) dans cette liste, puis relance le script. Les pages `confidentialite/` et `mentions-legales/` ne sont pas générées : leurs icônes de pied de page se modifient à la main.
+
 ## Ajouter un jeu (plus tard)
 
 1. Crée `modele_<jeu>.html` sur le modèle de `modele_holehop.html`.

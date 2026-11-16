@@ -58,6 +58,33 @@ document.addEventListener('click',function(e){var d=document.querySelector('.lan
 </script>"""
 
 
+# Réseaux sociaux du studio (mêmes comptes pour tous les jeux)
+RESEAUX = [
+    ("TikTok", "https://www.tiktok.com/@auroyaume_studio",
+     '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z"/></svg>'),
+    ("Instagram", "https://www.instagram.com/auroyaume_studio/",
+     '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>'),
+    ("YouTube", "https://www.youtube.com/@auroyaume_studio",
+     '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path fill-rule="evenodd" d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2 27 27 0 0 0 2 12a27 27 0 0 0 .4 4.8 2.6 2.6 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8A27 27 0 0 0 22 12a27 27 0 0 0-.4-4.8ZM10 15.2V8.8l5.2 3.2Z"/></svg>'),
+]
+PSEUDO = "@auroyaume_studio"
+
+
+def reseaux_icones(classe, sur, aria, indent="      "):
+    liens = "".join(
+        f'<a href="{u}" target="_blank" rel="noopener me" aria-label="{sur % n}" title="{n}">{svg}</a>'
+        for n, u, svg in RESEAUX)
+    return f'{indent}<div class="{classe}" role="list" aria-label="{aria}">{liens}</div>'
+
+
+def reseaux_cartes(sur):
+    out = []
+    for n, u, svg in RESEAUX:
+        out.append(f'        <a class="social-card card" href="{u}" target="_blank" rel="noopener me" aria-label="{sur % n}">'
+                   f'{svg}<b>{n}</b><span>{PSEUDO}</span></a>')
+    return "\n".join(out)
+
+
 def lire_textes():
     with open(os.path.join(SRC, "textes.csv"), encoding="utf-8", newline="") as f:
         lignes = list(csv.DictReader(f))
@@ -122,6 +149,10 @@ def main():
                 "redirect": REDIRECT if fr else "",
                 "lang_menu": menu_langues(code, chemin, textes["lang_label"][code] or "Langue"),
                 "lang_script": LANG_SCRIPT,
+                "social_head": reseaux_icones("social social-head", v["social_on"], v["social_aria"]),
+                "social_foot": reseaux_icones("social", v["social_on"], v["social_aria"], indent="    "),
+                "social_cards": reseaux_cartes(v["social_on"]),
+                "social_head_plain": reseaux_icones("social social-big", v["social_on"], v["social_aria"], indent="        "),
             })
 
             def remplace(m):
