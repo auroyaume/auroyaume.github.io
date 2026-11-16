@@ -3,11 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+(function(){try{
+  if(/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent))return;
+  var m={fr:'',en:'/en',es:'/es',pt:'/pt-br',de:'/de',it:'/it'};
+  var s=localStorage.getItem('ar_lang');
+  var l=s||((navigator.languages&&navigator.languages[0])||navigator.language||'fr').toLowerCase().slice(0,2);
+  if(!(l in m))l='en';
+  if(m[l])location.replace(m[l]+location.pathname+location.search+location.hash);
+}catch(e){}})();
+</script>
 <title>Au Royaume — Studio indépendant de jeux vidéo</title>
 <meta name="description" content="Au Royaume, petit studio indépendant de jeux vidéo. Créateur de Hole Hop, minigolf 3D qui se joue au doigt.">
 <meta name="theme-color" content="#141c2b">
+<link rel="canonical" href="https://auroyaume.github.io/">
+<link rel="alternate" hreflang="fr" href="https://auroyaume.github.io/">
+<link rel="alternate" hreflang="en" href="https://auroyaume.github.io/en/">
+<link rel="alternate" hreflang="es" href="https://auroyaume.github.io/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://auroyaume.github.io/pt-br/">
+<link rel="alternate" hreflang="de" href="https://auroyaume.github.io/de/">
+<link rel="alternate" hreflang="it" href="https://auroyaume.github.io/it/">
+<link rel="alternate" hreflang="x-default" href="https://auroyaume.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Au Royaume">
+<meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Au Royaume — Studio indépendant de jeux vidéo">
 <meta property="og:description" content="Petit studio indépendant de jeux vidéo. Premier jeu : Hole Hop, minigolf 3D.">
 <meta property="og:url" content="https://auroyaume.github.io/">
@@ -69,11 +88,24 @@
 <header class="topbar">
   <div class="container">
     <a class="logo" href="/" aria-current="page"><img src="/assets/blason.svg" alt="" width="30" height="35">Au Royaume</a>
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="#jeux">Jeux</a>
-      <a class="opt" href="#studio">Studio</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="topbar-right">
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#jeux">Jeux</a>
+        <a class="opt" href="#studio">Studio</a>
+        <a class="opt" href="#contact">Contact</a>
+      </nav>
+      <details class="lang-menu">
+        <summary aria-label="Langue"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg><span>FR</span></summary>
+        <ul>
+          <li><a href="/" hreflang="fr" lang="fr" data-lang="fr" aria-current="true">Français</a></li>
+          <li><a href="/en/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="/pt-br/" hreflang="pt-BR" lang="pt-BR" data-lang="pt">Português (Brasil)</a></li>
+          <li><a href="/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/it/" hreflang="it" lang="it" data-lang="it">Italiano</a></li>
+        </ul>
+      </details>
+    </div>
   </div>
 </header>
 
@@ -111,8 +143,8 @@
           </div>
         </a>
 
-        <!-- Prochain jeu : dupliquer la carte ci-dessus (sans la classe « featured »)
-             et créer son dossier, par exemple /tidekeep/index.html sur le modèle de /holehop/. -->
+        <!-- Prochain jeu : dupliquer la carte ci-dessus (sans la classe « featured »),
+             ajouter ses textes dans textes.csv et son modèle de page (voir _source/LISEZMOI.md). -->
         <div class="game card soon" aria-label="Prochain jeu en préparation">
           <div class="q" aria-hidden="true">?</div>
           <p>Un autre jeu se prépare dans l'atelier. On en reparle bientôt.</p>
@@ -171,6 +203,12 @@
     <span>© 2026 Au Royaume</span>
   </div>
 </footer>
-
+<script>
+document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){
+  try{localStorage.setItem('ar_lang',a.dataset.lang)}catch(e){}
+});});
+document.addEventListener('click',function(e){var d=document.querySelector('.lang-menu');
+  if(d&&d.open&&!d.contains(e.target))d.open=false;});
+</script>
 </body>
 </html>

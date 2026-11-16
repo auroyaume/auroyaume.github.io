@@ -3,12 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hole Hop : Mini Golf 3D — Au Royaume</title>
+<script>
+(function(){try{
+  if(/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent))return;
+  var m={fr:'',en:'/en',es:'/es',pt:'/pt-br',de:'/de',it:'/it'};
+  var s=localStorage.getItem('ar_lang');
+  var l=s||((navigator.languages&&navigator.languages[0])||navigator.language||'fr').toLowerCase().slice(0,2);
+  if(!(l in m))l='en';
+  if(m[l])location.replace(m[l]+location.pathname+location.search+location.hash);
+}catch(e){}})();
+</script>
+<title>Hole Hop: Mini Golf 3D — Au Royaume</title>
 <meta name="description" content="Hole Hop est un minigolf 3D qui se joue au doigt : vise, tire, trouve les passages secrets et débloque de nouveaux mondes. Bientôt sur Google Play.">
 <meta name="theme-color" content="#141c2b">
+<link rel="canonical" href="https://auroyaume.github.io/holehop/">
+<link rel="alternate" hreflang="fr" href="https://auroyaume.github.io/holehop/">
+<link rel="alternate" hreflang="en" href="https://auroyaume.github.io/en/holehop/">
+<link rel="alternate" hreflang="es" href="https://auroyaume.github.io/es/holehop/">
+<link rel="alternate" hreflang="pt-BR" href="https://auroyaume.github.io/pt-br/holehop/">
+<link rel="alternate" hreflang="de" href="https://auroyaume.github.io/de/holehop/">
+<link rel="alternate" hreflang="it" href="https://auroyaume.github.io/it/holehop/">
+<link rel="alternate" hreflang="x-default" href="https://auroyaume.github.io/holehop/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Au Royaume">
-<meta property="og:title" content="Hole Hop : Mini Golf 3D">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Hole Hop: Mini Golf 3D">
 <meta property="og:description" content="Vise, tire, trouve les secrets et débloque de nouveaux mondes. Bientôt sur Google Play.">
 <meta property="og:url" content="https://auroyaume.github.io/holehop/">
 <meta property="og:image" content="https://auroyaume.github.io/assets/og-holehop.jpg">
@@ -103,11 +122,23 @@
 <header class="topbar">
   <div class="container">
     <a class="logo" href="/"><img src="/assets/blason.svg" alt="" width="30" height="35">Au Royaume</a>
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="/holehop/" aria-current="page">Hole Hop</a>
-      <a class="opt" href="#mondes">Mondes</a>
-      <a href="#aide">Aide</a>
-    </nav>
+    <div class="topbar-right">
+      <nav class="nav" aria-label="Navigation principale">
+        <a class="opt" href="#mondes">Mondes</a>
+        <a class="opt" href="#aide">Aide</a>
+      </nav>
+      <details class="lang-menu">
+        <summary aria-label="Langue"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg><span>FR</span></summary>
+        <ul>
+          <li><a href="/holehop/" hreflang="fr" lang="fr" data-lang="fr" aria-current="true">Français</a></li>
+          <li><a href="/en/holehop/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/es/holehop/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+          <li><a href="/pt-br/holehop/" hreflang="pt-BR" lang="pt-BR" data-lang="pt">Português (Brasil)</a></li>
+          <li><a href="/de/holehop/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/it/holehop/" hreflang="it" lang="it" data-lang="it">Italiano</a></li>
+        </ul>
+      </details>
+    </div>
   </div>
 </header>
 
@@ -123,8 +154,7 @@
           <p class="lead">Un minigolf 3D qui se joue au doigt : on vise, on tire, et la balle rebondit, glisse, grimpe ou plonge. Des parties courtes, des parcours de plus en plus malins.</p>
         </div>
         <div class="store">
-          <!-- Badge Google Play masqué jusqu'au clic « Publier » (25/11). Le jour J, décommenter
-               et remplacer NOM.DU.PAQUET par l'identifiant du jeu, puis retirer la pastille « Bientôt ».
+          <!-- Badge Google Play masqué jusqu'au clic « Publier » (25/11) : voir _source/LISEZMOI.md.
           <a class="gp live" href="https://play.google.com/store/apps/details?id=NOM.DU.PAQUET" aria-label="Disponible sur Google Play">
             <svg viewBox="0 0 24 26" aria-hidden="true"><path d="M1 1.2 13.4 13 1 24.8c-.4-.3-.6-.8-.6-1.4V2.6c0-.6.2-1.1.6-1.4Z" fill="#00d7fe"/><path d="m17.5 8.9-4.1 4.1 4.1 4.1 4.6-2.6c1.3-.7 1.3-2.4 0-3.1l-4.6-2.5Z" fill="#ffce00"/><path d="M13.4 13 1 24.8c.5.4 1.2.5 1.9.1l14.6-7.8-4.1-4.1Z" fill="#ff3a44"/><path d="M13.4 13 17.5 8.9 2.9 1.1C2.2.7 1.5.8 1 1.2L13.4 13Z" fill="#00f076"/></svg>
             <span>Disponible sur<b>Google Play</b></span>
@@ -220,11 +250,11 @@
 
   <section class="section">
     <div class="container teaser">
-      <video src="/reseaux/2026-11-13_teaser-mondes_fr.mp4" poster="/holehop/img/poster-teaser.webp" controls playsinline preload="none" width="1080" height="1920"></video>
+      <video src="/holehop/video/bande-annonce-fr.mp4" poster="/holehop/img/poster-fr.webp" controls playsinline preload="none" width="720" height="1280"></video>
       <div style="display:grid;gap:12px">
         <span class="eyebrow">En vidéo</span>
-        <h2 style="font-size:clamp(28px,4.4vw,40px)">Le tour des mondes</h2>
-        <p class="lead">Quelques secondes pour voir la balle passer de la Prairie aux Cimes, puis de l'Archipel au Jurassique.</p>
+        <h2 style="font-size:clamp(28px,4.4vw,40px)">La bande-annonce</h2>
+        <p class="lead">Quinze secondes pour voir les mondes, les secrets et la collection.</p>
       </div>
     </div>
   </section>
@@ -236,7 +266,7 @@
         <h2>Un souci, une question ?</h2>
       </div>
       <div class="help">
-        <a class="card" href="/holehop/bug/"><b>Signaler un bug</b><span>Le plus simple : depuis le jeu, Réglages → Signaler un bug.</span></a>
+        <a class="card" href="/holehop/bug/?lang=fr"><b>Signaler un bug</b><span>Le plus simple : depuis le jeu, Réglages → Signaler un bug.</span></a>
         <a class="card" href="mailto:auroyaume.contact@gmail.com"><b>Nous écrire</b><span>auroyaume.contact@gmail.com</span></a>
         <a class="card" href="/confidentialite/"><b>Confidentialité</b><span>Ce que le jeu enregistre, et ce qu'il n'envoie pas.</span></a>
       </div>
@@ -262,6 +292,13 @@ const shots = document.getElementById('shots');
 document.querySelectorAll('.shots-nav button').forEach(b => b.addEventListener('click', () => {
   shots.scrollBy({ left: Number(b.dataset.dir) * shots.clientWidth * 0.8, behavior: 'smooth' });
 }));
+</script>
+<script>
+document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){
+  try{localStorage.setItem('ar_lang',a.dataset.lang)}catch(e){}
+});});
+document.addEventListener('click',function(e){var d=document.querySelector('.lang-menu');
+  if(d&&d.open&&!d.contains(e.target))d.open=false;});
 </script>
 </body>
 </html>

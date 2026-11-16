@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Au Royaume — Estudio independiente de videojuegos</title>
+<meta name="description" content="Au Royaume, pequeño estudio independiente de videojuegos. Creadores de Hole Hop, un minigolf 3D que se juega con el dedo.">
+<meta name="theme-color" content="#141c2b">
+<link rel="canonical" href="https://auroyaume.github.io/es/">
+<link rel="alternate" hreflang="fr" href="https://auroyaume.github.io/">
+<link rel="alternate" hreflang="en" href="https://auroyaume.github.io/en/">
+<link rel="alternate" hreflang="es" href="https://auroyaume.github.io/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://auroyaume.github.io/pt-br/">
+<link rel="alternate" hreflang="de" href="https://auroyaume.github.io/de/">
+<link rel="alternate" hreflang="it" href="https://auroyaume.github.io/it/">
+<link rel="alternate" hreflang="x-default" href="https://auroyaume.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Au Royaume">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Au Royaume — Estudio independiente de videojuegos">
+<meta property="og:description" content="Pequeño estudio independiente de videojuegos. Primer juego: Hole Hop, minigolf 3D.">
+<meta property="og:url" content="https://auroyaume.github.io/es/">
+<meta property="og:image" content="https://auroyaume.github.io/assets/og-holehop-en.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* Accueil : blason en grand, puis les jeux (grille prête pour plusieurs cartes), le studio, le contact */
+.hero { padding: 88px 0 64px; text-align: center; }
+.hero .container { display: grid; justify-items: center; gap: 22px; }
+.crest { width: 132px; height: 154px; filter: drop-shadow(0 12px 40px rgba(246, 195, 67, .28)); animation: float 6s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-8px); } }
+.hero h1 { font-size: clamp(48px, 10vw, 84px); letter-spacing: -.01em; }
+.hero h1 span { color: var(--gold); }
+.hero .lead { margin: 0 auto; text-align: center; }
+.hero .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px; }
+
+.games { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.game { overflow: hidden; display: grid; grid-template-rows: auto 1fr; text-decoration: none; color: inherit;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.game:hover { color: inherit; transform: translateY(-4px); border-color: rgba(246, 195, 67, .45); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+.game .art { aspect-ratio: 1200 / 735; background: var(--night-2); }
+.game .art img { width: 100%; height: 100%; object-fit: cover; }
+.game .body { padding: 22px 24px 26px; display: grid; gap: 10px; align-content: start; }
+.game h3 { font-size: 30px; }
+.game .row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 6px; }
+.game .more { font: 600 16px/1 var(--display); color: var(--gold); }
+.game.featured { grid-column: 1 / -1; }
+@media (min-width: 860px) {
+  .game.featured { grid-template-rows: none; grid-template-columns: 1.35fr 1fr; }
+  .game.featured .art { aspect-ratio: auto; min-height: 320px; }
+  .game.featured .body { align-content: center; padding: 32px 34px; }
+}
+.game.soon { grid-column: 1 / -1; border-style: dashed; display: flex; align-items: center; justify-content: center; gap: 18px; padding: 22px 24px; color: var(--muted); }
+.game.soon:hover { transform: none; box-shadow: none; border-color: var(--line); }
+.game.soon .q { font: 600 36px/1 var(--display); color: var(--gold); opacity: .7; }
+
+.studio { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.studio .card { padding: 24px; display: grid; gap: 8px; align-content: start; }
+.studio .ico { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: rgba(246,195,67,.12); font-size: 22px; }
+.studio h3 { font-size: 21px; }
+.studio p { color: var(--muted); }
+
+.contact { padding: 40px; display: grid; gap: 14px; justify-items: start;
+  background: linear-gradient(135deg, rgba(246,195,67,.12), rgba(79,209,139,.06)), var(--glass); }
+.contact h2 { font-size: clamp(26px, 4vw, 34px); }
+.contact .mail { font: 600 clamp(16px, 4.4vw, 24px)/1.2 var(--display); color: var(--fg); user-select: all; overflow-wrap: anywhere; }
+@media (max-width: 520px) { .contact { padding: 26px 22px; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="logo" href="/es/" aria-current="page"><img src="/assets/blason.svg" alt="" width="30" height="35">Au Royaume</a>
+    <div class="topbar-right">
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#jeux">Juegos</a>
+        <a class="opt" href="#studio">Estudio</a>
+        <a class="opt" href="#contact">Contacto</a>
+      </nav>
+      <details class="lang-menu">
+        <summary aria-label="Idioma"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg><span>ES</span></summary>
+        <ul>
+          <li><a href="/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          <li><a href="/en/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/es/" hreflang="es" lang="es" data-lang="es" aria-current="true">Español</a></li>
+          <li><a href="/pt-br/" hreflang="pt-BR" lang="pt-BR" data-lang="pt">Português (Brasil)</a></li>
+          <li><a href="/de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/it/" hreflang="it" lang="it" data-lang="it">Italiano</a></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <img class="crest" src="/assets/blason.svg" alt="Escudo de Au Royaume" width="132" height="154">
+      <h1>Au <span>Royaume</span></h1>
+      <p class="lead">Pequeño estudio independiente de videojuegos. Juegos que se aprenden en segundos y a los que dan ganas de volver.</p>
+      <div class="actions">
+        <a class="btn" href="/es/holehop/">Descubre Hole Hop</a>
+        <a class="btn ghost" href="#contact">Escríbenos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="jeux">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Nuestros juegos</span>
+        <h2>Lo que se prepara en Au Royaume</h2>
+      </div>
+
+      <div class="games">
+        <a class="game card featured" href="/es/holehop/">
+          <div class="art"><img src="/holehop/img/carte.webp" alt="Hole Hop: las islas de la Pradera, las Cumbres y el Archipiélago" width="1200" height="735"></div>
+          <div class="body">
+            <span class="eyebrow">Nuestro primer juego · Minigolf 3D</span>
+            <h3>Hole Hop</h3>
+            <p>Un minigolf 3D que se juega con el dedo: apunta, lanza, encuentra los pasajes secretos y desbloquea nuevos mundos, de las praderas a las islas piratas.</p>
+            <div class="row">
+              <span class="pill">Muy pronto en Google Play</span>
+              <span class="more">Ver el juego →</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Prochain jeu : dupliquer la carte ci-dessus (sans la classe « featured »),
+             ajouter ses textes dans textes.csv et son modèle de page (voir _source/LISEZMOI.md). -->
+        <div class="game card soon" aria-label="Próximo juego en preparación">
+          <div class="q" aria-hidden="true">?</div>
+          <p>Otro juego se está preparando en el taller. Pronto te contamos más.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="studio">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">El estudio</span>
+        <h2>Estudio pequeño, juegos cuidados</h2>
+        <p class="lead">Au Royaume es un estudio independiente. Diseñamos, programamos y probamos nuestros juegos nosotros mismos, en teléfonos de verdad.</p>
+      </div>
+      <div class="studio">
+        <div class="card">
+          <div class="ico" aria-hidden="true">📱</div>
+          <h3>Pensados para el móvil</h3>
+          <p>Partidas cortas, jugables con una mano, que funcionan bien incluso en móviles modestos.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">🗝️</div>
+          <h3>Secretos por todas partes</h3>
+          <p>Pasajes ocultos, hoyos bonus, objetos para coleccionar: nos encanta premiar la curiosidad.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true">🛠️</div>
+          <h3>Escuchamos a los jugadores</h3>
+          <p>¿Un error, una idea? Leemos cada mensaje y las actualizaciones siguen lo que nos contáis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact card">
+        <span class="eyebrow">Contacto</span>
+        <h2>¿Una pregunta, un error, una idea para un hoyo?</h2>
+        <p class="lead">Escríbenos y te responderemos en cuanto podamos.</p>
+        <a class="mail" href="mailto:auroyaume.contact@gmail.com">auroyaume.contact@gmail.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <a class="logo" href="/es/"><img src="/assets/blason.svg" alt="" width="24" height="28">Au Royaume</a>
+    <nav aria-label="Enlaces del pie de página">
+      <a href="/es/holehop/">Hole Hop</a>
+      <a href="/confidentialite/#en">Privacidad</a>
+      <a href="/mentions-legales/">Aviso legal</a>
+    </nav>
+    <span>© 2026 Au Royaume</span>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){
+  try{localStorage.setItem('ar_lang',a.dataset.lang)}catch(e){}
+});});
+document.addEventListener('click',function(e){var d=document.querySelector('.lang-menu');
+  if(d&&d.open&&!d.contains(e.target))d.open=false;});
+</script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hole Hop: Minigolf 3D — Au Royaume</title>
+<meta name="description" content="Hole Hop es un minigolf 3D que se juega con el dedo: apunta, lanza, encuentra los pasajes secretos y desbloquea nuevos mundos. Muy pronto en Google Play.">
+<meta name="theme-color" content="#141c2b">
+<link rel="canonical" href="https://auroyaume.github.io/es/holehop/">
+<link rel="alternate" hreflang="fr" href="https://auroyaume.github.io/holehop/">
+<link rel="alternate" hreflang="en" href="https://auroyaume.github.io/en/holehop/">
+<link rel="alternate" hreflang="es" href="https://auroyaume.github.io/es/holehop/">
+<link rel="alternate" hreflang="pt-BR" href="https://auroyaume.github.io/pt-br/holehop/">
+<link rel="alternate" hreflang="de" href="https://auroyaume.github.io/de/holehop/">
+<link rel="alternate" hreflang="it" href="https://auroyaume.github.io/it/holehop/">
+<link rel="alternate" hreflang="x-default" href="https://auroyaume.github.io/holehop/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Au Royaume">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Hole Hop: Minigolf 3D">
+<meta property="og:description" content="Apunta, lanza, descubre secretos y desbloquea nuevos mundos. Muy pronto en Google Play.">
+<meta property="og:url" content="https://auroyaume.github.io/es/holehop/">
+<meta property="og:image" content="https://auroyaume.github.io/assets/og-holehop-en.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* Fiche Hole Hop : bannière, accroche + bouton store, captures, mondes, chiffres, contenu, aide */
+.hero { padding: 40px 0 24px; }
+.banner { border-radius: 26px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 60px rgba(0,0,0,.4); aspect-ratio: 16 / 9; }
+.banner img { width: 100%; height: 100%; object-fit: cover; }
+.intro { display: grid; gap: 18px; margin-top: 36px; }
+@media (min-width: 860px) { .intro { grid-template-columns: 1.4fr 1fr; align-items: end; gap: 40px; } }
+.intro h1 { font-size: clamp(40px, 7vw, 64px); }
+.intro h1 small { display: block; font-size: .42em; color: var(--gold); margin-top: 6px; letter-spacing: .02em; }
+.store { display: grid; gap: 12px; justify-items: start; }
+@media (min-width: 860px) { .store { justify-items: end; text-align: right; } }
+.store .note { color: var(--muted); font-size: 14px; }
+.gp { display: inline-flex; align-items: center; gap: 12px; padding: 12px 20px; border-radius: 14px; background: #000; color: #fff;
+  border: 1px solid rgba(255,255,255,.25); text-decoration: none; opacity: .55; cursor: default; }
+.gp svg { width: 26px; height: 28px; }
+.gp span { display: grid; text-align: left; font: 500 11px/1.2 var(--body); letter-spacing: .04em; text-transform: uppercase; }
+.gp b { font: 600 20px/1.1 var(--display); text-transform: none; letter-spacing: 0; }
+.gp.live { opacity: 1; cursor: pointer; }
+.gp.live:hover { color: #fff; border-color: #fff; }
+
+/* Captures : défilement horizontal aimanté */
+.shots { display: grid; grid-auto-flow: column; grid-auto-columns: min(62vw, 240px); gap: 16px; overflow-x: auto;
+  scroll-snap-type: x mandatory; padding: 6px 2px 18px; scrollbar-width: thin; scrollbar-color: var(--night-3) transparent; }
+.shots figure { margin: 0; scroll-snap-align: start; }
+.shots img { border-radius: 20px; border: 1px solid var(--line); aspect-ratio: 9 / 16; width: 100%; object-fit: cover; background: var(--night-2); }
+.shots-wrap { position: relative; }
+.shots-nav { display: flex; gap: 8px; }
+.shots-nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--glass-2); color: var(--fg); font-size: 20px; cursor: pointer; }
+.shots-nav button:hover { background: rgba(255,255,255,.16); }
+.head-row { display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* Comment on joue */
+.steps { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); counter-reset: s; }
+.steps .card { padding: 24px; display: grid; gap: 8px; align-content: start; }
+.steps .card::before { counter-increment: s; content: counter(s); width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  font: 600 20px/1 var(--display); background: var(--gold); color: #2a1d00; box-shadow: 0 3px 0 var(--gold-2); }
+.steps h3 { font-size: 22px; }
+.steps p { color: var(--muted); }
+
+/* Mondes */
+.worlds { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.world { margin: 0; position: relative; overflow: hidden; border-radius: var(--radius); aspect-ratio: 3 / 4; border: 1px solid var(--line); }
+.world img { width: 100%; height: 100% !important; object-fit: cover; transition: transform .4s ease; }
+.world:hover img { transform: scale(1.04); }
+.world figcaption { position: absolute; inset: auto 0 0 0; padding: 60px 20px 20px; display: grid; gap: 4px;
+  background: linear-gradient(transparent, rgba(10, 14, 26, .92)); }
+.world h3 { font-size: 24px; }
+.world p { color: #d3ddee; font-size: 15px; line-height: 1.45; }
+@media (max-width: 520px) { .worlds { grid-template-columns: 1fr 1fr; gap: 12px; } .world figcaption { padding: 40px 12px 12px; } .world h3 { font-size: 18px; } .world p { font-size: 13px; } }
+.more-worlds { margin-top: 18px; color: var(--muted); }
+
+/* Chiffres par monde */
+.stats { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.stat { padding: 22px; text-align: center; display: grid; gap: 4px; }
+.stat b { font: 600 46px/1 var(--display); color: var(--gold); }
+.stat.violet b { color: #b98cff; }
+.stat span { color: var(--muted); }
+
+/* Contenu (grille de blocs) */
+.feats { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.feats .card { padding: 24px; display: grid; gap: 8px; align-content: start; }
+.feats .ico { font-size: 26px; }
+.feats h3 { font-size: 21px; }
+.feats p { color: var(--muted); }
+
+/* Bande-annonce */
+.teaser { display: grid; gap: 28px; align-items: center; }
+@media (min-width: 760px) { .teaser { grid-template-columns: 320px 1fr; } }
+.teaser video { width: 100%; max-width: 320px; aspect-ratio: 9 / 16; border-radius: 24px; border: 1px solid var(--line); background: var(--night-2); justify-self: center; }
+
+/* Aide */
+.help { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.help a { padding: 22px; display: grid; gap: 6px; text-decoration: none; color: var(--fg); }
+.help a:hover { border-color: rgba(246, 195, 67, .45); color: var(--fg); }
+.help b { font: 600 19px/1.2 var(--display); }
+.help span { color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="logo" href="/es/"><img src="/assets/blason.svg" alt="" width="30" height="35">Au Royaume</a>
+    <div class="topbar-right">
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="opt" href="#mondes">Mundos</a>
+        <a class="opt" href="#aide">Ayuda</a>
+      </nav>
+      <details class="lang-menu">
+        <summary aria-label="Idioma"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg><span>ES</span></summary>
+        <ul>
+          <li><a href="/holehop/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+          <li><a href="/en/holehop/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/es/holehop/" hreflang="es" lang="es" data-lang="es" aria-current="true">Español</a></li>
+          <li><a href="/pt-br/holehop/" hreflang="pt-BR" lang="pt-BR" data-lang="pt">Português (Brasil)</a></li>
+          <li><a href="/de/holehop/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+          <li><a href="/it/holehop/" hreflang="it" lang="it" data-lang="it">Italiano</a></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="banner"><img src="/holehop/img/banniere-en.webp" alt="Hole Hop, un juego de Au Royaume: las islas de las Cumbres, el Archipiélago, la Pradera y el Jurásico" width="1600" height="900" fetchpriority="high"></div>
+
+      <div class="intro">
+        <div style="display:grid;gap:14px">
+          <span class="pill" style="justify-self:start">Muy pronto en Google Play</span>
+          <h1>Hole Hop <small>Minigolf 3D</small></h1>
+          <p class="lead">Un minigolf 3D que se juega con el dedo: apuntas, lanzas y la bola rebota, resbala, sube o cae al vacío. Partidas cortas y recorridos cada vez más ingeniosos.</p>
+        </div>
+        <div class="store">
+          <!-- Badge Google Play masqué jusqu'au clic « Publier » (25/11) : voir _source/LISEZMOI.md.
+          <a class="gp live" href="https://play.google.com/store/apps/details?id=NOM.DU.PAQUET" aria-label="Disponible en Google Play">
+            <svg viewBox="0 0 24 26" aria-hidden="true"><path d="M1 1.2 13.4 13 1 24.8c-.4-.3-.6-.8-.6-1.4V2.6c0-.6.2-1.1.6-1.4Z" fill="#00d7fe"/><path d="m17.5 8.9-4.1 4.1 4.1 4.1 4.6-2.6c1.3-.7 1.3-2.4 0-3.1l-4.6-2.5Z" fill="#ffce00"/><path d="M13.4 13 1 24.8c.5.4 1.2.5 1.9.1l14.6-7.8-4.1-4.1Z" fill="#ff3a44"/><path d="M13.4 13 17.5 8.9 2.9 1.1C2.2.7 1.5.8 1 1.2L13.4 13Z" fill="#00f076"/></svg>
+            <span>Disponible en<b>Google Play</b></span>
+          </a>
+          -->
+          <p class="note">Gratis · Android · español, inglés, francés, portugués (Brasil), alemán, italiano</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="captures">
+    <div class="container">
+      <div class="section-head head-row">
+        <div style="display:grid;gap:10px">
+          <span class="eyebrow">En imágenes</span>
+          <h2>Un vistazo a los recorridos</h2>
+        </div>
+        <div class="shots-nav" aria-hidden="true">
+          <button type="button" data-dir="-1" tabindex="-1">←</button>
+          <button type="button" data-dir="1" tabindex="-1">→</button>
+        </div>
+      </div>
+      <div class="shots" id="shots" tabindex="0" aria-label="Capturas del juego, desplazamiento horizontal">
+        <figure><img src="/holehop/img/capture-04.webp" alt="Un hoyo de la Pradera con un molino entre los campos" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-03.webp" alt="Un recorrido nevado de las Cumbres con un trampolín sobre el vacío" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-02.webp" alt="Un pontón entre dos barcos piratas en el Archipiélago" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-01.webp" alt="Un T-rex junto a un río de lava en el Jurásico" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-05.webp" alt="Un hoyo del Archipiélago que pasa por un barco" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-06.webp" alt="Un recorrido dorado lleno de monedas" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-07.webp" alt="Un hoyo dorado en forma de laberinto" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-08.webp" alt="El mapa de los mundos con las estrellas por ganar" width="540" height="960" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Cómo se juega</span>
+        <h2>Fácil de aprender</h2>
+      </div>
+      <div class="steps">
+        <div class="card"><h3>Apunta</h3><p>Desliza el dedo para elegir la dirección. El ángulo justo suele importar más que la fuerza.</p></div>
+        <div class="card"><h3>Lanza</h3><p>Mide tu golpe y mira cómo la bola rebota, resbala por el hielo o sale volando de un trampolín.</p></div>
+        <div class="card"><h3>Encuentra los secretos</h3><p>Algunos muros esconden pasajes. Encuéntralos para ganar estrellas moradas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="mondes">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Los mundos</span>
+        <h2>Cada mundo tiene sus ideas</h2>
+        <p class="lead">Su propio decorado, sus trampas y sus mecánicas. Los mundos nuevos se desbloquean con las estrellas que ganas.</p>
+      </div>
+      <div class="worlds">
+        <figure class="world"><img src="/holehop/img/capture-04.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>La Pradera</h3><p>Molinos de viento, campos y puentes: donde todo empieza.</p></figcaption></figure>
+        <figure class="world"><img src="/holehop/img/capture-03.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>Las Cumbres</h3><p>Nieve, hielo resbaladizo y trampolines sobre el vacío.</p></figcaption></figure>
+        <figure class="world"><img src="/holehop/img/capture-02.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>El Archipiélago</h3><p>Islas piratas, pontones y barcos que cruzar.</p></figcaption></figure>
+        <figure class="world"><img src="/holehop/img/capture-01.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>El Jurásico</h3><p>Selva, volcanes, lava... y un T-rex que vigila el paso.</p></figcaption></figure>
+      </div>
+      <p class="more-worlds">Y un mundo oculto, para quien busque bien.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">En cada mundo</span>
+        <h2>Mucho que hacer</h2>
+      </div>
+      <div class="stats">
+        <div class="stat card"><b>25</b><span>hoyos</span></div>
+        <div class="stat card violet"><b>8</b><span>pasajes secretos</span></div>
+        <div class="stat card"><b>3</b><span>hoyos bonus por desbloquear</span></div>
+        <div class="stat card"><b>★</b><span>estrellas doradas por conseguir</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="feats">
+        <div class="card"><div class="ico" aria-hidden="true">🧩</div><h3>Mecánicas de verdad</h3><p>Hielo, rampas, trampolines, barras móviles, molinos, puentes, lava: cada hoyo es un pequeño enigma.</p></div>
+        <div class="card"><div class="ico" aria-hidden="true">🎩</div><h3>Tu colección</h3><p>Bolas, estelas, putters, sombreros y mascotas, que se compran con las monedas que recoges en los recorridos. Cada mundo tiene sus objetos.</p></div>
+        <div class="card"><div class="ico" aria-hidden="true">🎁</div><h3>Un regalo cada día</h3><p>Vuelve cada día a por tu Regalo del día: la racha llega hasta los 30 días.</p></div>
+        <div class="card"><div class="ico" aria-hidden="true">💚</div><h3>Gratis</h3><p>Con anuncios y compras dentro de la aplicación opcionales: Sin anuncios, paquetes de monedas, Pase Premium.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container teaser">
+      <video src="/holehop/video/bande-annonce-es.mp4" poster="/holehop/img/poster-es.webp" controls playsinline preload="none" width="720" height="1280"></video>
+      <div style="display:grid;gap:12px">
+        <span class="eyebrow">En vídeo</span>
+        <h2 style="font-size:clamp(28px,4.4vw,40px)">El tráiler</h2>
+        <p class="lead">Quince segundos para ver los mundos, los secretos y la colección.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="aide">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Ayuda</span>
+        <h2>¿Un problema, una pregunta?</h2>
+      </div>
+      <div class="help">
+        <a class="card" href="/holehop/bug/?lang=es"><b>Informar de un error</b><span>Lo más fácil, desde el juego: Ajustes → Informar de un error.</span></a>
+        <a class="card" href="mailto:auroyaume.contact@gmail.com"><b>Escríbenos</b><span>auroyaume.contact@gmail.com</span></a>
+        <a class="card" href="/confidentialite/#en"><b>Privacidad</b><span>Lo que guarda el juego y lo que no envía (resumen en inglés).</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <a class="logo" href="/es/"><img src="/assets/blason.svg" alt="" width="24" height="28">Au Royaume</a>
+    <nav aria-label="Enlaces del pie de página">
+      <a href="/es/">Inicio</a>
+      <a href="/confidentialite/#en">Privacidad</a>
+      <a href="/mentions-legales/">Aviso legal</a>
+    </nav>
+    <span>© 2026 Au Royaume</span>
+  </div>
+</footer>
+
+<script>
+// Flèches du carrousel de captures (le défilement au doigt marche sans)
+const shots = document.getElementById('shots');
+document.querySelectorAll('.shots-nav button').forEach(b => b.addEventListener('click', () => {
+  shots.scrollBy({ left: Number(b.dataset.dir) * shots.clientWidth * 0.8, behavior: 'smooth' });
+}));
+</script>
+<script>
+document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){
+  try{localStorage.setItem('ar_lang',a.dataset.lang)}catch(e){}
+});});
+document.addEventListener('click',function(e){var d=document.querySelector('.lang-menu');
+  if(d&&d.open&&!d.contains(e.target))d.open=false;});
+</script>
+</body>
+</html>
