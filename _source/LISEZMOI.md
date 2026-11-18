@@ -24,7 +24,9 @@ Les noms des mondes et des objets du jeu (La Prairie / The Meadow…, « Signale
 
 Ajoute une ligne dans `textes.csv` (nouvelle clé), mets `{{ta_cle}}` dans le modèle, puis relance le script.
 
-## Le 25/11 (sortie de Hole Hop)
+## Sortie de Hole Hop (fait le 18/11)
+
+*Fait le 18/11 : bouton Google Play actif (`com.auroyaume.holehop`), pastille « Disponible sur Google Play » (`pill_live`), descriptions sans « Bientôt ». Pour mémoire, la marche suivie :*
 
 Dans `modele_holehop.html` :
 
