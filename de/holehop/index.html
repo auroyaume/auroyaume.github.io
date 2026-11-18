@@ -287,6 +287,16 @@ const shots = document.getElementById('shots');
 document.querySelectorAll('.shots-nav button').forEach(b => b.addEventListener('click', () => {
   shots.scrollBy({ left: Number(b.dataset.dir) * shots.clientWidth * 0.8, behavior: 'smooth' });
 }));
+
+// Bouton Google Play : sur Android, ouvrir directement l'appli Play Store, même depuis le
+// navigateur intégré d'Instagram ou de TikTok (qui bloque souvent play.google.com) ;
+// le lien normal reste en secours (browser_fallback_url) et sur les autres appareils.
+if (/Android/i.test(navigator.userAgent)) {
+  const gpUrl = 'https://play.google.com/store/apps/details?id=com.auroyaume.holehop';
+  document.querySelectorAll('a.gp.live').forEach(a => {
+    a.href = 'intent://details?id=com.auroyaume.holehop#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=' + encodeURIComponent(gpUrl) + ';end';
+  });
+}
 </script>
 <script>
 document.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){
