@@ -1,24 +1,24 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>
 (function(){try{
   if(/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent))return;
-  var m={fr:'',en:'/en',es:'/es',pt:'/pt-br',de:'/de',it:'/it'};
+  var m={en:'',fr:'/fr',es:'/es',pt:'/pt-br',de:'/de',it:'/it'};
   var s=localStorage.getItem('ar_lang');
-  var l=s||((navigator.languages&&navigator.languages[0])||navigator.language||'fr').toLowerCase().slice(0,2);
+  var l=s||((navigator.languages&&navigator.languages[0])||navigator.language||'en').toLowerCase().slice(0,2);
   if(!(l in m))l='en';
   if(m[l])location.replace(m[l]+location.pathname+location.search+location.hash);
 }catch(e){}})();
 </script>
-<title>Hole Hop: Mini Golf 3D — Au Royaume</title>
-<meta name="description" content="Hole Hop est un minigolf 3D qui se joue au doigt : vise, tire, trouve les passages secrets et débloque de nouveaux mondes. Disponible sur Google Play.">
+<title>Hole Hop: 3D Mini Golf — Au Royaume</title>
+<meta name="description" content="Hole Hop is a 3D mini golf game you play with your finger: aim, shoot, find the secret passages and unlock new worlds. Available on Google Play.">
 <meta name="theme-color" content="#141c2b">
 <link rel="canonical" href="https://auroyaume.github.io/holehop/">
-<link rel="alternate" hreflang="fr" href="https://auroyaume.github.io/holehop/">
-<link rel="alternate" hreflang="en" href="https://auroyaume.github.io/en/holehop/">
+<link rel="alternate" hreflang="en" href="https://auroyaume.github.io/holehop/">
+<link rel="alternate" hreflang="fr" href="https://auroyaume.github.io/fr/holehop/">
 <link rel="alternate" hreflang="es" href="https://auroyaume.github.io/es/holehop/">
 <link rel="alternate" hreflang="pt-BR" href="https://auroyaume.github.io/pt-br/holehop/">
 <link rel="alternate" hreflang="de" href="https://auroyaume.github.io/de/holehop/">
@@ -26,11 +26,11 @@
 <link rel="alternate" hreflang="x-default" href="https://auroyaume.github.io/holehop/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Au Royaume">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Hole Hop: Mini Golf 3D">
-<meta property="og:description" content="Vise, tire, trouve les secrets et débloque de nouveaux mondes. Disponible sur Google Play.">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Hole Hop: 3D Mini Golf">
+<meta property="og:description" content="Aim, shoot, find secrets and unlock new worlds. Available on Google Play.">
 <meta property="og:url" content="https://auroyaume.github.io/holehop/">
-<meta property="og:image" content="https://auroyaume.github.io/assets/og-holehop.jpg">
+<meta property="og:image" content="https://auroyaume.github.io/assets/og-holehop-en.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -124,16 +124,16 @@
   <div class="container">
     <a class="logo" href="/"><img src="/assets/blason.svg" alt="" width="30" height="35">Au Royaume</a>
     <div class="topbar-right">
-      <nav class="nav" aria-label="Navigation principale">
-        <a class="opt" href="#mondes">Mondes</a>
-        <a class="opt" href="#aide">Aide</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a class="opt" href="#mondes">Worlds</a>
+        <a class="opt" href="#aide">Help</a>
       </nav>
-      <div class="social social-head" role="list" aria-label="Réseaux sociaux"><a href="https://www.tiktok.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume sur TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#25F4EE" transform="translate(-.8 -.6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#FE2C55" transform="translate(.8 .6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#fff"/></svg></a><a href="https://www.instagram.com/auroyaume_studio/" target="_blank" rel="noopener me" aria-label="Au Royaume sur Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="url(#ar-ig)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16" cy="8" r=".95" fill="#fff"/></svg></a><a href="https://www.youtube.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume sur YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8Z" fill="#FF0000"/><path d="M9.8 15.3V8.7l5.7 3.3Z" fill="#fff"/></svg></a></div>
+      <div class="social social-head" role="list" aria-label="Social media"><a href="https://www.tiktok.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume on TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#25F4EE" transform="translate(-.8 -.6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#FE2C55" transform="translate(.8 .6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#fff"/></svg></a><a href="https://www.instagram.com/auroyaume_studio/" target="_blank" rel="noopener me" aria-label="Au Royaume on Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="url(#ar-ig)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16" cy="8" r=".95" fill="#fff"/></svg></a><a href="https://www.youtube.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume on YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8Z" fill="#FF0000"/><path d="M9.8 15.3V8.7l5.7 3.3Z" fill="#fff"/></svg></a></div>
       <details class="lang-menu">
-        <summary aria-label="Langue"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg><span>FR</span></summary>
+        <summary aria-label="Language"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg><span>EN</span></summary>
         <ul>
-          <li><a href="/holehop/" hreflang="fr" lang="fr" data-lang="fr" aria-current="true">Français</a></li>
-          <li><a href="/en/holehop/" hreflang="en" lang="en" data-lang="en">English</a></li>
+          <li><a href="/holehop/" hreflang="en" lang="en" data-lang="en" aria-current="true">English</a></li>
+          <li><a href="/fr/holehop/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
           <li><a href="/es/holehop/" hreflang="es" lang="es" data-lang="es">Español</a></li>
           <li><a href="/pt-br/holehop/" hreflang="pt-BR" lang="pt-BR" data-lang="pt">Português (Brasil)</a></li>
           <li><a href="/de/holehop/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
@@ -147,20 +147,20 @@
 <main>
   <section class="hero">
     <div class="container">
-      <div class="banner"><img src="/holehop/img/banniere.webp" alt="Hole Hop, un jeu Au Royaume : les îles des Cimes, de l'Archipel, de la Prairie et du Jurassique" width="1600" height="900" fetchpriority="high"></div>
+      <div class="banner"><img src="/holehop/img/banniere-en.webp" alt="Hole Hop, a game by Au Royaume: the islands of the Peaks, the Archipelago, the Meadow and the Jurassic" width="1600" height="900" fetchpriority="high"></div>
 
       <div class="intro">
         <div style="display:grid;gap:14px">
-          <span class="pill" style="justify-self:start">Disponible sur Google Play</span>
-          <h1>Hole Hop <small>Mini Golf 3D</small></h1>
-          <p class="lead">Un minigolf 3D qui se joue au doigt : on vise, on tire, et la balle rebondit, glisse, grimpe ou plonge. Des parties courtes, des parcours de plus en plus malins.</p>
+          <span class="pill" style="justify-self:start">Available on Google Play</span>
+          <h1>Hole Hop <small>3D Mini Golf</small></h1>
+          <p class="lead">A 3D mini golf game you play with your finger: aim, shoot, and watch the ball bounce, slide, climb or drop. Short rounds, courses that get trickier and trickier.</p>
         </div>
         <div class="store">
-          <a class="gp live" href="https://play.google.com/store/apps/details?id=com.auroyaume.holehop" aria-label="Disponible sur Google Play">
+          <a class="gp live" href="https://play.google.com/store/apps/details?id=com.auroyaume.holehop" aria-label="Get it on Google Play">
             <svg viewBox="0 0 24 26" aria-hidden="true"><path d="M1 1.2 13.4 13 1 24.8c-.4-.3-.6-.8-.6-1.4V2.6c0-.6.2-1.1.6-1.4Z" fill="#00d7fe"/><path d="m17.5 8.9-4.1 4.1 4.1 4.1 4.6-2.6c1.3-.7 1.3-2.4 0-3.1l-4.6-2.5Z" fill="#ffce00"/><path d="M13.4 13 1 24.8c.5.4 1.2.5 1.9.1l14.6-7.8-4.1-4.1Z" fill="#ff3a44"/><path d="M13.4 13 17.5 8.9 2.9 1.1C2.2.7 1.5.8 1 1.2L13.4 13Z" fill="#00f076"/></svg>
-            <span>Disponible sur<b>Google Play</b></span>
+            <span>Get it on<b>Google Play</b></span>
           </a>
-          <p class="note">Gratuit · Android · français, anglais, espagnol, portugais (Brésil), allemand, italien</p>
+          <p class="note">Free · Android · English, French, Spanish, Portuguese (Brazil), German, Italian</p>
         </div>
       </div>
     </div>
@@ -170,23 +170,23 @@
     <div class="container">
       <div class="section-head head-row">
         <div style="display:grid;gap:10px">
-          <span class="eyebrow">En images</span>
-          <h2>Un aperçu des parcours</h2>
+          <span class="eyebrow">Screenshots</span>
+          <h2>A look at the courses</h2>
         </div>
         <div class="shots-nav" aria-hidden="true">
           <button type="button" data-dir="-1" tabindex="-1">←</button>
           <button type="button" data-dir="1" tabindex="-1">→</button>
         </div>
       </div>
-      <div class="shots" id="shots" tabindex="0" aria-label="Captures d'écran du jeu, défilement horizontal">
-        <figure><img src="/holehop/img/capture-04.webp" alt="Un trou de la Prairie avec un moulin à vent au milieu des champs" width="540" height="960" loading="lazy"></figure>
-        <figure><img src="/holehop/img/capture-03.webp" alt="Un parcours enneigé des Cimes avec un tremplin au-dessus du vide" width="540" height="960" loading="lazy"></figure>
-        <figure><img src="/holehop/img/capture-02.webp" alt="Un ponton entre deux navires pirates dans l'Archipel" width="540" height="960" loading="lazy"></figure>
-        <figure><img src="/holehop/img/capture-01.webp" alt="Un T-rex au bord d'une coulée de lave dans le Jurassique" width="540" height="960" loading="lazy"></figure>
-        <figure><img src="/holehop/img/capture-05.webp" alt="Un trou de l'Archipel qui passe par un navire" width="540" height="960" loading="lazy"></figure>
-        <figure><img src="/holehop/img/capture-06.webp" alt="Un parcours doré bordé de pièces" width="540" height="960" loading="lazy"></figure>
-        <figure><img src="/holehop/img/capture-07.webp" alt="Un trou doré en forme de labyrinthe" width="540" height="960" loading="lazy"></figure>
-        <figure><img src="/holehop/img/capture-08.webp" alt="La carte des mondes avec les étoiles à gagner" width="540" height="960" loading="lazy"></figure>
+      <div class="shots" id="shots" tabindex="0" aria-label="Game screenshots, scroll sideways">
+        <figure><img src="/holehop/img/capture-04.webp" alt="A Meadow hole with a windmill among the fields" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-03.webp" alt="A snowy course in the Peaks with a jump over the void" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-02.webp" alt="A pier between two pirate ships in the Archipelago" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-01.webp" alt="A T. rex next to a lava flow in the Jurassic" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-05.webp" alt="An Archipelago hole that goes through a ship" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-06.webp" alt="A golden course lined with coins" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-07.webp" alt="A golden maze-shaped hole" width="540" height="960" loading="lazy"></figure>
+        <figure><img src="/holehop/img/capture-08.webp" alt="The world map with the stars to earn" width="540" height="960" loading="lazy"></figure>
       </div>
     </div>
   </section>
@@ -194,13 +194,13 @@
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Comment on joue</span>
-        <h2>Simple à prendre en main</h2>
+        <span class="eyebrow">How to play</span>
+        <h2>Easy to pick up</h2>
       </div>
       <div class="steps">
-        <div class="card"><h3>Vise</h3><p>Glisse le doigt pour choisir la direction. Le bon angle compte souvent plus que la force.</p></div>
-        <div class="card"><h3>Tire</h3><p>Dose ta frappe, et regarde la balle rebondir, glisser sur la glace ou s'envoler d'un tremplin.</p></div>
-        <div class="card"><h3>Trouve les secrets</h3><p>Certains murs cachent des passages. Trouve-les pour gagner des étoiles violettes.</p></div>
+        <div class="card"><h3>Aim</h3><p>Slide your finger to pick a direction. The right angle often matters more than power.</p></div>
+        <div class="card"><h3>Shoot</h3><p>Judge your shot, then watch the ball bounce, slide across the ice or fly off a jump.</p></div>
+        <div class="card"><h3>Find the secrets</h3><p>Some walls hide passages. Find them to earn purple stars.</p></div>
       </div>
     </div>
   </section>
@@ -208,31 +208,31 @@
   <section class="section" id="mondes">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Les mondes</span>
-        <h2>Chaque monde a ses idées</h2>
-        <p class="lead">Un décor, des pièges et des mécaniques à lui. De nouveaux mondes se débloquent au fil des étoiles gagnées.</p>
+        <span class="eyebrow">The worlds</span>
+        <h2>Every world has its own ideas</h2>
+        <p class="lead">Its own look, its own traps and its own mechanics. New worlds unlock as you earn stars.</p>
       </div>
       <div class="worlds">
-        <figure class="world"><img src="/holehop/img/capture-04.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>La Prairie</h3><p>Moulins à vent, champs et ponts : là où tout commence.</p></figcaption></figure>
-        <figure class="world"><img src="/holehop/img/capture-03.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>Les Cimes</h3><p>Neige, glace qui fait glisser et tremplins au-dessus du vide.</p></figcaption></figure>
-        <figure class="world"><img src="/holehop/img/capture-02.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>L'Archipel</h3><p>Îles de pirates, pontons et navires à traverser.</p></figcaption></figure>
-        <figure class="world"><img src="/holehop/img/capture-01.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>Le Jurassique</h3><p>Jungle, volcans, lave… et un T-rex qui garde le passage.</p></figcaption></figure>
+        <figure class="world"><img src="/holehop/img/capture-04.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>The Meadow</h3><p>Windmills, fields and bridges: where it all begins.</p></figcaption></figure>
+        <figure class="world"><img src="/holehop/img/capture-03.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>The Peaks</h3><p>Snow, slippery ice and jumps over the void.</p></figcaption></figure>
+        <figure class="world"><img src="/holehop/img/capture-02.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>The Archipelago</h3><p>Pirate islands, piers and ships to cross.</p></figcaption></figure>
+        <figure class="world"><img src="/holehop/img/capture-01.webp" alt="" width="540" height="960" loading="lazy"><figcaption><h3>The Jurassic</h3><p>Jungle, volcanoes, lava... and a T. rex guarding the way.</p></figcaption></figure>
       </div>
-      <p class="more-worlds">Et un monde caché, pour ceux qui cherchent bien.</p>
+      <p class="more-worlds">And a hidden world, for those who look closely.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Dans chaque monde</span>
-        <h2>De quoi faire</h2>
+        <span class="eyebrow">In every world</span>
+        <h2>Plenty to do</h2>
       </div>
       <div class="stats">
-        <div class="stat card"><b>25</b><span>trous</span></div>
-        <div class="stat card violet"><b>8</b><span>passages secrets</span></div>
-        <div class="stat card"><b>3</b><span>trous bonus à débloquer</span></div>
-        <div class="stat card"><b>★</b><span>des étoiles dorées à gagner</span></div>
+        <div class="stat card"><b>25</b><span>holes</span></div>
+        <div class="stat card violet"><b>8</b><span>secret passages</span></div>
+        <div class="stat card"><b>3</b><span>bonus holes to unlock</span></div>
+        <div class="stat card"><b>★</b><span>gold stars to earn</span></div>
       </div>
     </div>
   </section>
@@ -240,21 +240,21 @@
   <section class="section">
     <div class="container">
       <div class="feats">
-        <div class="card"><div class="ico" aria-hidden="true">🧩</div><h3>De vraies mécaniques</h3><p>Glace, rampes, tremplins, barres mobiles, moulins, ponts, lave : chaque trou a sa petite énigme.</p></div>
-        <div class="card"><div class="ico" aria-hidden="true">🎩</div><h3>Ta collection</h3><p>Balles, traînées, putters, chapeaux et compagnons, à acheter avec les pièces ramassées sur les parcours. Chaque monde a ses objets.</p></div>
-        <div class="card"><div class="ico" aria-hidden="true">🎁</div><h3>Un cadeau chaque jour</h3><p>Reviens tous les jours chercher ton cadeau : la série va jusqu'à 30 jours.</p></div>
-        <div class="card"><div class="ico" aria-hidden="true">💚</div><h3>Gratuit</h3><p>Avec des publicités et des achats intégrés facultatifs : Sans pub, packs de pièces, Pass Premium.</p></div>
+        <div class="card"><div class="ico" aria-hidden="true">🧩</div><h3>Real mechanics</h3><p>Ice, ramps, jumps, moving bars, windmills, bridges, lava: every hole is a little puzzle.</p></div>
+        <div class="card"><div class="ico" aria-hidden="true">🎩</div><h3>Your collection</h3><p>Balls, trails, putters, hats and pets, bought with the coins you pick up on the courses. Every world has its own items.</p></div>
+        <div class="card"><div class="ico" aria-hidden="true">🎁</div><h3>A gift every day</h3><p>Come back each day for your Daily Gift: the streak runs up to 30 days.</p></div>
+        <div class="card"><div class="ico" aria-hidden="true">💚</div><h3>Free to play</h3><p>With ads and optional in-app purchases: No Ads, coin packs, Premium Pass.</p></div>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container teaser">
-      <video src="/holehop/video/bande-annonce-fr.mp4" poster="/holehop/img/poster-fr.webp" controls playsinline preload="none" width="720" height="1280"></video>
+      <video src="/holehop/video/bande-annonce-en.mp4" poster="/holehop/img/poster-en.webp" controls playsinline preload="none" width="720" height="1280"></video>
       <div style="display:grid;gap:12px">
-        <span class="eyebrow">En vidéo</span>
-        <h2 style="font-size:clamp(28px,4.4vw,40px)">La bande-annonce</h2>
-        <p class="lead">Quinze secondes pour voir les mondes, les secrets et la collection.</p>
+        <span class="eyebrow">Trailer</span>
+        <h2 style="font-size:clamp(28px,4.4vw,40px)">The trailer</h2>
+        <p class="lead">Fifteen seconds of worlds, secrets and collectibles.</p>
       </div>
     </div>
   </section>
@@ -262,17 +262,17 @@
   <section class="section" id="aide">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Aide</span>
-        <h2>Un souci, une question ?</h2>
+        <span class="eyebrow">Help</span>
+        <h2>A problem, a question?</h2>
       </div>
       <div class="help">
-        <a class="card" href="/holehop/bug/?lang=fr"><b>Signaler un bug</b><span>Le plus simple : depuis le jeu, Réglages → Signaler un bug.</span></a>
-        <a class="card" href="mailto:auroyaume.contact@gmail.com"><b>Nous écrire</b><span>auroyaume.contact@gmail.com</span></a>
-        <a class="card" href="/confidentialite/"><b>Confidentialité</b><span>Ce que le jeu enregistre, et ce qu'il n'envoie pas.</span></a>
+        <a class="card" href="/holehop/bug/?lang=en"><b>Report a Bug</b><span>Easiest from the game: Settings → Report a Bug.</span></a>
+        <a class="card" href="mailto:auroyaume.contact@gmail.com"><b>Write to us</b><span>auroyaume.contact@gmail.com</span></a>
+        <a class="card" href="/confidentialite/#en"><b>Privacy</b><span>What the game stores, and what it doesn't send (summary in English).</span></a>
       </div>
       <div class="social-row">
-        <span>Suis Hole Hop sur</span>
-        <div class="social social-big" role="list" aria-label="Réseaux sociaux"><a href="https://www.tiktok.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume sur TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#25F4EE" transform="translate(-.8 -.6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#FE2C55" transform="translate(.8 .6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#fff"/></svg></a><a href="https://www.instagram.com/auroyaume_studio/" target="_blank" rel="noopener me" aria-label="Au Royaume sur Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="url(#ar-ig)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16" cy="8" r=".95" fill="#fff"/></svg></a><a href="https://www.youtube.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume sur YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8Z" fill="#FF0000"/><path d="M9.8 15.3V8.7l5.7 3.3Z" fill="#fff"/></svg></a></div>
+        <span>Follow Hole Hop on</span>
+        <div class="social social-big" role="list" aria-label="Social media"><a href="https://www.tiktok.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume on TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#25F4EE" transform="translate(-.8 -.6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#FE2C55" transform="translate(.8 .6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#fff"/></svg></a><a href="https://www.instagram.com/auroyaume_studio/" target="_blank" rel="noopener me" aria-label="Au Royaume on Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="url(#ar-ig)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16" cy="8" r=".95" fill="#fff"/></svg></a><a href="https://www.youtube.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume on YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8Z" fill="#FF0000"/><path d="M9.8 15.3V8.7l5.7 3.3Z" fill="#fff"/></svg></a></div>
       </div>
     </div>
   </section>
@@ -281,12 +281,12 @@
 <footer class="site-footer">
   <div class="container">
     <a class="logo" href="/"><img src="/assets/blason.svg" alt="" width="24" height="28">Au Royaume</a>
-    <nav aria-label="Liens du pied de page">
-      <a href="/">Accueil</a>
-      <a href="/confidentialite/">Confidentialité</a>
-      <a href="/mentions-legales/">Mentions légales</a>
+    <nav aria-label="Footer links">
+      <a href="/">Home</a>
+      <a href="/confidentialite/#en">Privacy</a>
+      <a href="/mentions-legales/">Legal notice</a>
     </nav>
-    <div class="social" role="list" aria-label="Réseaux sociaux"><a href="https://www.tiktok.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume sur TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#25F4EE" transform="translate(-.8 -.6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#FE2C55" transform="translate(.8 .6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#fff"/></svg></a><a href="https://www.instagram.com/auroyaume_studio/" target="_blank" rel="noopener me" aria-label="Au Royaume sur Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="url(#ar-ig)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16" cy="8" r=".95" fill="#fff"/></svg></a><a href="https://www.youtube.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume sur YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8Z" fill="#FF0000"/><path d="M9.8 15.3V8.7l5.7 3.3Z" fill="#fff"/></svg></a></div>
+    <div class="social" role="list" aria-label="Social media"><a href="https://www.tiktok.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume on TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#25F4EE" transform="translate(-.8 -.6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#FE2C55" transform="translate(.8 .6)"/><path d="M16.6 3c.3 2.4 1.7 3.9 4 4.1v3a7 7 0 0 1-4-1.3v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.1a2.6 2.6 0 1 0 1.7 2.4V3h3Z" fill="#fff"/></svg></a><a href="https://www.instagram.com/auroyaume_studio/" target="_blank" rel="noopener me" aria-label="Au Royaume on Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="url(#ar-ig)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16" cy="8" r=".95" fill="#fff"/></svg></a><a href="https://www.youtube.com/@auroyaume_studio" target="_blank" rel="noopener me" aria-label="Au Royaume on YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.7 4.7 12 4.7 12 4.7s-6.7 0-8.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8Z" fill="#FF0000"/><path d="M9.8 15.3V8.7l5.7 3.3Z" fill="#fff"/></svg></a></div>
     <span>© 2026 Au Royaume</span>
   </div>
 </footer>

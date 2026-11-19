@@ -1,6 +1,6 @@
 # Site Au Royaume : les 6 langues
 
-Le site existe dans les 6 langues du jeu : français (à la racine), anglais `/en/`, espagnol `/es/`, portugais du Brésil `/pt-br/`, allemand `/de/` et italien `/it/`.
+Le site existe dans les 6 langues du jeu : **anglais à la racine** (depuis le 19/11, identité internationale du studio), français `/fr/`, espagnol `/es/`, portugais du Brésil `/pt-br/`, allemand `/de/` et italien `/it/`.
 
 **Ne modifie pas à la main** `index.html`, `holehop/index.html` ni les dossiers de langue : ils sont **générés**. Pour changer le site, on passe par ce dossier `_source/`.
 
@@ -16,7 +16,7 @@ Le site existe dans les 6 langues du jeu : français (à la racine), anglais `/e
 2. Depuis la racine du dépôt, lance `python _source/generer.py`.
 3. Commit et push.
 
-Si une case est vide, la page prend le texte français et le script affiche la liste des textes manquants.
+Si une case est vide, la page prend le texte anglais et le script affiche la liste des textes manquants.
 
 Les noms des mondes et des objets du jeu (La Prairie / The Meadow…, « Signaler un bug », « Réglages »…) sont repris de `minigolf/translations/hole_hop.csv` : garde-les identiques au jeu.
 
@@ -61,3 +61,7 @@ Pour ajouter un réseau, ajoute une ligne (nom, lien, icône SVG) dans cette lis
 ## La langue des visiteurs
 
 Les pages françaises envoient automatiquement le visiteur vers la langue de son navigateur (l'anglais pour toute autre langue). Si le visiteur choisit une langue dans le menu, ce choix est mémorisé et passe avant celle du navigateur. Les robots des moteurs de recherche ne sont pas redirigés.
+
+## Anglais à la racine (19/11)
+
+La racine (`/`, `/holehop/`) est en anglais, le français est dans `/fr/`. Les visiteurs sont toujours envoyés vers la langue de leur téléphone (ou celle choisie dans le menu) ; une langue inconnue reste en anglais. Les anciennes adresses `/en/` et `/en/holehop/` sont de simples redirections vers la racine, écrites par `generer.py`. `confidentialite/`, `mentions-legales/` et `holehop/bug/` ne changent pas.

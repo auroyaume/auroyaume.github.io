@@ -14,11 +14,11 @@ RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(RACINE, "_source")
 SITE = "https://auroyaume.github.io"
 
-# Langues du site = langues du jeu. dossier "" = racine (français).
+# Langues du site = langues du jeu. dossier "" = racine (anglais depuis le 19/11 ; le français est dans /fr/).
 LANGUES = [
     # code CSV, attribut lang, dossier, nom affiché, og:locale, code du formulaire de bug
-    ("fr",    "fr",    "",       "Français",           "fr_FR", "fr"),
-    ("en",    "en",    "en",     "English",            "en_US", "en"),
+    ("en",    "en",    "",       "English",            "en_US", "en"),
+    ("fr",    "fr",    "fr",     "Français",           "fr_FR", "fr"),
     ("es",    "es",    "es",     "Español",            "es_ES", "es"),
     ("pt-BR", "pt-BR", "pt-br",  "Português (Brasil)", "pt_BR", "pt_BR"),
     ("de",    "de",    "de",     "Deutsch",            "de_DE", "de"),
@@ -35,14 +35,14 @@ GLOBE = ('<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fil
          'stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9'
          'c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></svg>')
 
-# Redirection vers la langue du navigateur, seulement sur les pages françaises (racine)
+# Redirection vers la langue du navigateur, seulement sur les pages de la racine (anglais)
 # et seulement si le visiteur n'a pas déjà choisi une langue. Les robots ne sont pas redirigés.
 REDIRECT = """<script>
 (function(){try{
   if(/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent))return;
-  var m={fr:'',en:'/en',es:'/es',pt:'/pt-br',de:'/de',it:'/it'};
+  var m={en:'',fr:'/fr',es:'/es',pt:'/pt-br',de:'/de',it:'/it'};
   var s=localStorage.getItem('ar_lang');
-  var l=s||((navigator.languages&&navigator.languages[0])||navigator.language||'fr').toLowerCase().slice(0,2);
+  var l=s||((navigator.languages&&navigator.languages[0])||navigator.language||'en').toLowerCase().slice(0,2);
   if(!(l in m))l='en';
   if(m[l])location.replace(m[l]+location.pathname+location.search+location.hash);
 }catch(e){}})();
@@ -139,7 +139,7 @@ def main():
             for k, row in textes.items():
                 if not v[k]:
                     manquants.append(f"{k} [{code}]")
-                    v[k] = (row.get("fr") or "").strip()  # repli sur le français
+                    v[k] = (row.get("en") or row.get("fr") or "").strip()  # repli sur l'anglais
             v = {k: t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;") for k, t in v.items()}
             fr = code == "fr"
             v.update({
@@ -154,7 +154,7 @@ def main():
                 "poster": f"/holehop/img/poster-{lang.lower()}.webp",
                 "conf_href": "/confidentialite/" if fr else "/confidentialite/#en",
                 "bug_lang": bug,
-                "redirect": REDIRECT if fr else "",
+                "redirect": REDIRECT if not dossier else "",
                 "lang_menu": menu_langues(code, chemin, textes["lang_label"][code] or "Langue"),
                 "lang_script": LANG_SCRIPT,
                 "svg_defs": SVG_DEFS,
@@ -178,8 +178,19 @@ def main():
             with open(dest, "w", encoding="utf-8", newline="\n") as f:
                 f.write(page)
             print("écrit", os.path.relpath(dest, RACINE))
+    # Anciennes adresses anglaises (/en/...) : renvoient vers la racine, qui est en anglais depuis le 19/11.
+    for _, chemin in PAGES:
+        dest = os.path.join(RACINE, "en", *chemin.strip("/").split("/"), "index.html") if chemin != "/" else os.path.join(RACINE, "en", "index.html")
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        with open(dest, "w", encoding="utf-8", newline="\n") as f:
+            f.write(f'<!doctype html>\n<html lang="en"><head><meta charset="utf-8">\n'
+                    f'<title>Au Royaume</title>\n<link rel="canonical" href="{SITE}{chemin}">\n'
+                    f'<meta name="robots" content="noindex">\n<meta http-equiv="refresh" content="0; url={chemin}">\n'
+                    f'<script>location.replace("{chemin}"+location.search+location.hash)</script>\n'
+                    f'</head><body><a href="{chemin}">Au Royaume</a></body></html>\n')
+        print("redirection", os.path.relpath(dest, RACINE))
     if manquants:
-        print("\nTextes manquants (remplacés par le français) :")
+        print("\nTextes manquants (remplacés par l anglais) :")
         for m in sorted(set(manquants)):
             print("  -", m)
 
