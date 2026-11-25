@@ -12,7 +12,7 @@ import sys
 
 RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(RACINE, "_source")
-SITE = "https://auroyaume.github.io"
+SITE = "https://auroyaumestudio.com"
 
 # Langues du site = langues du jeu. dossier "" = racine (anglais depuis le 19/11 ; le français est dans /fr/).
 LANGUES = [
